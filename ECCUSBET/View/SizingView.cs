@@ -10,8 +10,8 @@ Histórico de atividades
 Autor                   Data       Descrição        
 ----------------------  ---------- --------------------------------------------------------------------------------------        
 Austregíselo Junior     15/10/2020 Criação do APP e Início do layout;
-Austregíselo Junior     12/09/2020 deLayout;
-Austregíselo Junior     14/09/2020 Desenvolvimento do layout e início das implementaçôes das views e regras de negócio;
+Austregíselo Junior     19/10/2020 desenvolvendo Layout;
+Austregíselo Junior     20/10/2020 Layout básico OK;
 Austregíselo Junior     15/09/2020 Implementação das regras de negócio e desenvolvimento de layout;
 Austregíselo Junior     16/09/2020 Implementação dos cálculos completa e funcionando;
 Austregíselo Junior     17/09/2020 Adicionando a programaçõpa defensiva em caso de erro na adição de dado de entrada;
@@ -34,6 +34,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -52,6 +53,24 @@ namespace ECCUSBET.View
 
         }
 
-       
+        private void ManualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManualView manualView = new ManualView();
+            manualView.Show();
+        }
+
+        private void DesenvolvimentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DevView devView = new DevView();
+            devView.Show();
+        }
+
+        private void SairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            StartView startView = new StartView();
+            startView.Close();
+        }
+     
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace ECCUSBET.View
+﻿using System.Runtime.Serialization.Formatters;
+
+namespace ECCUSBET.View
 {
     partial class SizingView
     {
@@ -28,15 +30,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SizingView));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label2 = new System.Windows.Forms.Label();
             this.BtnCalcular = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabDimensionamento = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
             this.TxtVolTotal = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -56,6 +59,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TxtVolUtio = new System.Windows.Forms.TextBox();
             this.tabAnalize = new System.Windows.Forms.TabPage();
+            this.BtnAnalizar = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.BtnCustoTotal = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.GrigOrcamento = new System.Windows.Forms.DataGridView();
+            this.TabSercicoeEquipamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TabUnidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TabQuatidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TabPrecoUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TabPrecoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.limparToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,28 +85,14 @@
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.desenvolvimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.GrigOrcamento = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
-            this.TabSercicoeEquipamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TabUnidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TabQuatidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TabPrecoUnitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TabPrecoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.BtnCustoTotal = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.BtnAnalizar = new System.Windows.Forms.Button();
-            this.Chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabDimensionamento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.tabAnalize.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrigOrcamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chart1)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
@@ -168,6 +170,14 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(554, 172);
             this.dataGridView1.TabIndex = 21;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.LightSlateGray;
+            this.panel2.Location = new System.Drawing.Point(2, 302);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(574, 198);
+            this.panel2.TabIndex = 22;
             // 
             // label10
             // 
@@ -363,6 +373,151 @@
             this.tabAnalize.Text = "Análise";
             this.tabAnalize.UseVisualStyleBackColor = true;
             // 
+            // BtnAnalizar
+            // 
+            this.BtnAnalizar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnAnalizar.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnAnalizar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.BtnAnalizar.FlatAppearance.BorderSize = 2;
+            this.BtnAnalizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.BtnAnalizar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnAnalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAnalizar.Location = new System.Drawing.Point(418, 332);
+            this.BtnAnalizar.Name = "BtnAnalizar";
+            this.BtnAnalizar.Size = new System.Drawing.Size(84, 26);
+            this.BtnAnalizar.TabIndex = 21;
+            this.BtnAnalizar.Text = "Analizar";
+            this.BtnAnalizar.UseVisualStyleBackColor = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label13.Location = new System.Drawing.Point(457, 508);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(107, 23);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "Versão 2.0";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(425, 249);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(81, 15);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "Custo Total = ";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Enabled = false;
+            this.textBox3.Location = new System.Drawing.Point(514, 247);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(52, 20);
+            this.textBox3.TabIndex = 19;
+            // 
+            // BtnCustoTotal
+            // 
+            this.BtnCustoTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.BtnCustoTotal.BackColor = System.Drawing.SystemColors.Control;
+            this.BtnCustoTotal.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
+            this.BtnCustoTotal.FlatAppearance.BorderSize = 2;
+            this.BtnCustoTotal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.BtnCustoTotal.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BtnCustoTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCustoTotal.Location = new System.Drawing.Point(6, 243);
+            this.BtnCustoTotal.Name = "BtnCustoTotal";
+            this.BtnCustoTotal.Size = new System.Drawing.Size(87, 26);
+            this.BtnCustoTotal.TabIndex = 17;
+            this.BtnCustoTotal.Text = "Custo total";
+            this.BtnCustoTotal.UseVisualStyleBackColor = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(6, 13);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(159, 20);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Tabela de orçamento";
+            // 
+            // GrigOrcamento
+            // 
+            this.GrigOrcamento.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.GrigOrcamento.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.GrigOrcamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GrigOrcamento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TabSercicoeEquipamento,
+            this.TabUnidade,
+            this.TabQuatidades,
+            this.TabPrecoUnitario,
+            this.TabPrecoTotal});
+            this.GrigOrcamento.Location = new System.Drawing.Point(6, 36);
+            this.GrigOrcamento.Name = "GrigOrcamento";
+            this.GrigOrcamento.Size = new System.Drawing.Size(560, 204);
+            this.GrigOrcamento.TabIndex = 1;
+            // 
+            // TabSercicoeEquipamento
+            // 
+            this.TabSercicoeEquipamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.TabSercicoeEquipamento.HeaderText = "Serviços/Equipamentos";
+            this.TabSercicoeEquipamento.Name = "TabSercicoeEquipamento";
+            this.TabSercicoeEquipamento.Width = 145;
+            // 
+            // TabUnidade
+            // 
+            this.TabUnidade.HeaderText = "Unidades";
+            this.TabUnidade.Name = "TabUnidade";
+            // 
+            // TabQuatidades
+            // 
+            this.TabQuatidades.HeaderText = "Quantidades";
+            this.TabQuatidades.Name = "TabQuatidades";
+            // 
+            // TabPrecoUnitario
+            // 
+            this.TabPrecoUnitario.HeaderText = "Preço por unidade";
+            this.TabPrecoUnitario.Name = "TabPrecoUnitario";
+            // 
+            // TabPrecoTotal
+            // 
+            this.TabPrecoTotal.HeaderText = "Preço total";
+            this.TabPrecoTotal.Name = "TabPrecoTotal";
+            // 
+            // Chart1
+            // 
+            this.Chart1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Chart1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Chart1.BackImageTransparentColor = System.Drawing.Color.White;
+            this.Chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            this.Chart1.BorderSkin.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            chartArea4.AxisX.Title = "Custo total";
+            chartArea4.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
+            chartArea4.AxisY.Title = "Volume total";
+            chartArea4.Name = "ChartArea1";
+            this.Chart1.ChartAreas.Add(chartArea4);
+            this.Chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            legend4.Name = "Legend1";
+            this.Chart1.Legends.Add(legend4);
+            this.Chart1.Location = new System.Drawing.Point(54, 288);
+            this.Chart1.Name = "Chart1";
+            this.Chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            this.Chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            series4.XValueMember = "Profundidade";
+            series4.YValueMembers = "Volume útil";
+            this.Chart1.Series.Add(series4);
+            this.Chart1.Size = new System.Drawing.Size(465, 210);
+            this.Chart1.TabIndex = 22;
+            this.Chart1.Text = "Chart1";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -445,171 +600,21 @@
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
             // 
             // manualToolStripMenuItem
             // 
             this.manualToolStripMenuItem.Name = "manualToolStripMenuItem";
             this.manualToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.manualToolStripMenuItem.Text = "Manual";
+            this.manualToolStripMenuItem.Click += new System.EventHandler(this.ManualToolStripMenuItem_Click);
             // 
             // desenvolvimentoToolStripMenuItem
             // 
             this.desenvolvimentoToolStripMenuItem.Name = "desenvolvimentoToolStripMenuItem";
             this.desenvolvimentoToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
             this.desenvolvimentoToolStripMenuItem.Text = "Desenvolvimento";
-            // 
-            // GrigOrcamento
-            // 
-            this.GrigOrcamento.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.GrigOrcamento.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.GrigOrcamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GrigOrcamento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TabSercicoeEquipamento,
-            this.TabUnidade,
-            this.TabQuatidades,
-            this.TabPrecoUnitario,
-            this.TabPrecoTotal});
-            this.GrigOrcamento.Location = new System.Drawing.Point(6, 36);
-            this.GrigOrcamento.Name = "GrigOrcamento";
-            this.GrigOrcamento.Size = new System.Drawing.Size(560, 204);
-            this.GrigOrcamento.TabIndex = 1;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 13);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(159, 20);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Tabela de orçamento";
-            // 
-            // TabSercicoeEquipamento
-            // 
-            this.TabSercicoeEquipamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.TabSercicoeEquipamento.HeaderText = "Serviços/Equipamentos";
-            this.TabSercicoeEquipamento.Name = "TabSercicoeEquipamento";
-            this.TabSercicoeEquipamento.Width = 145;
-            // 
-            // TabUnidade
-            // 
-            this.TabUnidade.HeaderText = "Unidades";
-            this.TabUnidade.Name = "TabUnidade";
-            // 
-            // TabQuatidades
-            // 
-            this.TabQuatidades.HeaderText = "Quantidades";
-            this.TabQuatidades.Name = "TabQuatidades";
-            // 
-            // TabPrecoUnitario
-            // 
-            this.TabPrecoUnitario.HeaderText = "Preço por unidade";
-            this.TabPrecoUnitario.Name = "TabPrecoUnitario";
-            // 
-            // TabPrecoTotal
-            // 
-            this.TabPrecoTotal.HeaderText = "Preço total";
-            this.TabPrecoTotal.Name = "TabPrecoTotal";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(425, 249);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(81, 15);
-            this.label12.TabIndex = 18;
-            this.label12.Text = "Custo Total = ";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(514, 247);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(52, 20);
-            this.textBox3.TabIndex = 19;
-            // 
-            // BtnCustoTotal
-            // 
-            this.BtnCustoTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnCustoTotal.BackColor = System.Drawing.SystemColors.Control;
-            this.BtnCustoTotal.FlatAppearance.BorderColor = System.Drawing.Color.DarkGray;
-            this.BtnCustoTotal.FlatAppearance.BorderSize = 2;
-            this.BtnCustoTotal.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
-            this.BtnCustoTotal.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BtnCustoTotal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCustoTotal.Location = new System.Drawing.Point(6, 243);
-            this.BtnCustoTotal.Name = "BtnCustoTotal";
-            this.BtnCustoTotal.Size = new System.Drawing.Size(87, 26);
-            this.BtnCustoTotal.TabIndex = 17;
-            this.BtnCustoTotal.Text = "Custo total";
-            this.BtnCustoTotal.UseVisualStyleBackColor = false;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(457, 508);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(107, 23);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "Versão 2.0";
-            // 
-            // BtnAnalizar
-            // 
-            this.BtnAnalizar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.BtnAnalizar.BackColor = System.Drawing.SystemColors.Control;
-            this.BtnAnalizar.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.BtnAnalizar.FlatAppearance.BorderSize = 2;
-            this.BtnAnalizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
-            this.BtnAnalizar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BtnAnalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAnalizar.Location = new System.Drawing.Point(418, 332);
-            this.BtnAnalizar.Name = "BtnAnalizar";
-            this.BtnAnalizar.Size = new System.Drawing.Size(84, 26);
-            this.BtnAnalizar.TabIndex = 21;
-            this.BtnAnalizar.Text = "Analizar";
-            this.BtnAnalizar.UseVisualStyleBackColor = false;
-            // 
-            // Chart1
-            // 
-            this.Chart1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Chart1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Chart1.BackImageTransparentColor = System.Drawing.Color.White;
-            this.Chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            this.Chart1.BorderSkin.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            chartArea2.AxisX.Title = "Custo total";
-            chartArea2.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
-            chartArea2.AxisY.Title = "Volume total";
-            chartArea2.Name = "ChartArea1";
-            this.Chart1.ChartAreas.Add(chartArea2);
-            this.Chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            legend2.Name = "Legend1";
-            this.Chart1.Legends.Add(legend2);
-            this.Chart1.Location = new System.Drawing.Point(54, 288);
-            this.Chart1.Name = "Chart1";
-            this.Chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            this.Chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.XValueMember = "Profundidade";
-            series2.YValueMembers = "Volume útil";
-            this.Chart1.Series.Add(series2);
-            this.Chart1.Size = new System.Drawing.Size(465, 210);
-            this.Chart1.TabIndex = 22;
-            this.Chart1.Text = "Chart1";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.LightSlateGray;
-            this.panel2.Location = new System.Drawing.Point(2, 302);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(574, 198);
-            this.panel2.TabIndex = 22;
+            this.desenvolvimentoToolStripMenuItem.Click += new System.EventHandler(this.DesenvolvimentoToolStripMenuItem_Click);
             // 
             // SizingView
             // 
@@ -619,6 +624,7 @@
             this.ClientSize = new System.Drawing.Size(582, 591);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SizingView";
             this.Text = "SizingView";
@@ -630,10 +636,10 @@
             this.panel1.PerformLayout();
             this.tabAnalize.ResumeLayout(false);
             this.tabAnalize.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrigOrcamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Chart1)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

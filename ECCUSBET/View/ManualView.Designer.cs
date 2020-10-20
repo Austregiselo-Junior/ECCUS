@@ -120,6 +120,7 @@
             this.Controls.Add(this.Label4);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ManualView";
             this.Text = "Manual";
             this.ResumeLayout(false);

@@ -19,21 +19,21 @@ namespace ECCUSBET.View
 
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
-            StartView Start = new StartView();
+
             SizingView sizingView = new SizingView();
             sizingView.Show();
-            Start.Close();
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void BntFechar_Click(object sender, EventArgs e)
         {
-            StartView Start = new StartView();
-            Start.Close();
+            this.Close();
         }
 
         private void BtnMinimizar_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
+
     }
 }

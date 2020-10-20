@@ -173,6 +173,7 @@
             this.Controls.Add(this.LinkLabel2);
             this.Controls.Add(this.PictureBox1);
             this.Controls.Add(this.Label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DevView";
             this.Text = "DevView";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
