@@ -30,9 +30,9 @@ namespace ECCUSBET.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SizingView));
             this.label2 = new System.Windows.Forms.Label();
             this.BtnCalcular = new System.Windows.Forms.Button();
@@ -48,9 +48,9 @@ namespace ECCUSBET.View
             this.TxtProfundidadeMedia = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.TxtTemperatura = new System.Windows.Forms.TextBox();
+            this.txtNPessoas = new System.Windows.Forms.TextBox();
+            this.txtIntervalodeLimpeza = new System.Windows.Forms.TextBox();
+            this.txtTemperatura = new System.Windows.Forms.TextBox();
             this.BoxSelecaoPadrao = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -246,9 +246,9 @@ namespace ECCUSBET.View
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSlateGray;
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.TxtTemperatura);
+            this.panel1.Controls.Add(this.txtNPessoas);
+            this.panel1.Controls.Add(this.txtIntervalodeLimpeza);
+            this.panel1.Controls.Add(this.txtTemperatura);
             this.panel1.Controls.Add(this.BoxSelecaoPadrao);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
@@ -260,37 +260,41 @@ namespace ECCUSBET.View
             this.panel1.Size = new System.Drawing.Size(268, 282);
             this.panel1.TabIndex = 14;
             // 
-            // textBox2
+            // txtNPessoas
             // 
-            this.textBox2.Location = new System.Drawing.Point(207, 212);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(43, 20);
-            this.textBox2.TabIndex = 8;
+            this.txtNPessoas.Location = new System.Drawing.Point(207, 212);
+            this.txtNPessoas.Name = "txtNPessoas";
+            this.txtNPessoas.Size = new System.Drawing.Size(43, 20);
+            this.txtNPessoas.TabIndex = 8;
             // 
-            // textBox1
+            // txtIntervalodeLimpeza
             // 
-            this.textBox1.Location = new System.Drawing.Point(207, 178);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(43, 20);
-            this.textBox1.TabIndex = 7;
+            this.txtIntervalodeLimpeza.Location = new System.Drawing.Point(207, 178);
+            this.txtIntervalodeLimpeza.Name = "txtIntervalodeLimpeza";
+            this.txtIntervalodeLimpeza.Size = new System.Drawing.Size(43, 20);
+            this.txtIntervalodeLimpeza.TabIndex = 7;
             // 
-            // TxtTemperatura
+            // txtTemperatura
             // 
-            this.TxtTemperatura.Location = new System.Drawing.Point(207, 145);
-            this.TxtTemperatura.Name = "TxtTemperatura";
-            this.TxtTemperatura.Size = new System.Drawing.Size(43, 20);
-            this.TxtTemperatura.TabIndex = 6;
+            this.txtTemperatura.Location = new System.Drawing.Point(207, 145);
+            this.txtTemperatura.Name = "txtTemperatura";
+            this.txtTemperatura.Size = new System.Drawing.Size(43, 20);
+            this.txtTemperatura.TabIndex = 6;
             // 
             // BoxSelecaoPadrao
             // 
             this.BoxSelecaoPadrao.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BoxSelecaoPadrao.FormattingEnabled = true;
             this.BoxSelecaoPadrao.Items.AddRange(new object[] {
-            "Residência padrão baixo",
-            "Residência padrão médio",
-            "Residência padrão alto",
-            "Hotel",
-            "Alojamento provisório"});
+            "Residência de baixo padrão",
+            "Residência de médio padrão",
+            "Residência de alto padrão",
+            "Hotel (exceto lavanderia e cozinha)",
+            "Alojamento provisório",
+            "Edfícios públicos ou comerciais",
+            "Escolas",
+            "Bares",
+            "Restaurantes e similares"});
             this.BoxSelecaoPadrao.Location = new System.Drawing.Point(9, 88);
             this.BoxSelecaoPadrao.Name = "BoxSelecaoPadrao";
             this.BoxSelecaoPadrao.Size = new System.Drawing.Size(150, 21);
@@ -332,9 +336,9 @@ namespace ECCUSBET.View
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(6, 66);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(124, 15);
+            this.label3.Size = new System.Drawing.Size(121, 15);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Padrão de residência";
+            this.label3.Text = "Padrão de ocupação";
             // 
             // label1
             // 
@@ -495,25 +499,25 @@ namespace ECCUSBET.View
             this.Chart1.BackImageTransparentColor = System.Drawing.Color.White;
             this.Chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.Chart1.BorderSkin.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            chartArea4.AxisX.Title = "Custo total";
-            chartArea4.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
-            chartArea4.AxisY.Title = "Volume total";
-            chartArea4.Name = "ChartArea1";
-            this.Chart1.ChartAreas.Add(chartArea4);
+            chartArea1.AxisX.Title = "Custo total";
+            chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
+            chartArea1.AxisY.Title = "Volume total";
+            chartArea1.Name = "ChartArea1";
+            this.Chart1.ChartAreas.Add(chartArea1);
             this.Chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            legend4.Name = "Legend1";
-            this.Chart1.Legends.Add(legend4);
+            legend1.Name = "Legend1";
+            this.Chart1.Legends.Add(legend1);
             this.Chart1.Location = new System.Drawing.Point(54, 288);
             this.Chart1.Name = "Chart1";
             this.Chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
             this.Chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            series4.XValueMember = "Profundidade";
-            series4.YValueMembers = "Volume útil";
-            this.Chart1.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.XValueMember = "Profundidade";
+            series1.YValueMembers = "Volume útil";
+            this.Chart1.Series.Add(series1);
             this.Chart1.Size = new System.Drawing.Size(465, 210);
             this.Chart1.TabIndex = 22;
             this.Chart1.Text = "Chart1";
@@ -652,7 +656,7 @@ namespace ECCUSBET.View
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabDimensionamento;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox TxtTemperatura;
+        private System.Windows.Forms.TextBox txtTemperatura;
         private System.Windows.Forms.ComboBox BoxSelecaoPadrao;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -668,8 +672,8 @@ namespace ECCUSBET.View
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox TxtProfundidadeMedia;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNPessoas;
+        private System.Windows.Forms.TextBox txtIntervalodeLimpeza;
         private System.Windows.Forms.TextBox TxtVolUtio;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
