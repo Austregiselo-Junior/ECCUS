@@ -11,58 +11,81 @@ namespace ECCUSBET.Model
 {
     class BET_Entities
     { //------------------------------  Variáveis de escopo global  ----------------------------//
-        public double VolUtio, AreadaBet, VolTotal;
-        double ContrDiaruiaTotal, Pd;
-        readonly int CLodoFresco = 1;
-        readonly int MetroQuadradoporHab = 2;
-        int Sp, Ta;
 
-        public int SelecaoPadrao(string padrao)
+
+        private readonly string Padrao;
+        private readonly int Npessoas, Intervalo;
+        private readonly double Temperatura;
+        private double ContrDiaruiaTotal, Pd;
+        private readonly int CLodoFresco = 1;
+        private readonly int MetroQuadradoporHab = 2;
+        private int Sp, Ta;
+
+        //-----  Construtor padrão (Irrelevando ao código, já que a instanciação é feita por métodos e parâmetros)  ----------------------------//
+        public BET_Entities()
         {
-            if (padrao == "Residência de baixo padrão")
+        }
+
+        public BET_Entities(string padrao, int npessoas, int intervalo, double temperatura)
+        {
+            Padrao = padrao;
+            Npessoas = npessoas;
+            Intervalo = intervalo;
+            Temperatura = temperatura;
+        }
+
+        public double VolUtio { get; private set; }
+        public double AreadaBet { get; private set; }
+        public double VolTotal { get; private set; }
+        public double ProfundidadeM { get; private set; }
+
+
+        //------------------  Métodos que recebem os parametros a partir do View  -----------------//
+        private int SelecaoPadrao()
+        {
+            if (Padrao == "Residência de baixo padrão")
             {
                 Sp = 100;
             }
-            else if (padrao == "Residência de médio padrão")
+            else if (Padrao == "Residência de médio padrão")
             {
                 Sp = 130;
             }
-            else if (padrao == "Residência de alto padrão")
+            else if (Padrao == "Residência de alto padrão")
             {
                 Sp = 160;
             }
-            else if (padrao == "Hotel (exceto lavanderia e cozinha)")
+            else if (Padrao == "Hotel (exceto lavanderia e cozinha)")
             {
                 Sp = 100;
             }
-            else if (padrao == "Alojamento provisório")
+            else if (Padrao == "Alojamento provisório")
             {
                 Sp = 80;
             }
-            else if (padrao == "Edfícios públicos ou comerciais")
+            else if (Padrao == "Edfícios públicos ou comerciais")
             {
                 Sp = 50;
             }
-            else if (padrao == "Escolas")
+            else if (Padrao == "Escolas")
             {
                 Sp = 50;
             }
-            else if (padrao == "Bares")
+            else if (Padrao == "Bares")
             {
                 Sp = 6;
             }
-            else if (padrao == "Restaurantes e similares")
+            else if (Padrao == "Restaurantes e similares")
             {
                 Sp = 25;
             }
             return Sp;
         }
 
-
-        public double PeriododeDetencao(int pessoas)
+        private double PeriododeDetencao()
         {
 
-            ContrDiaruiaTotal = (Sp * pessoas);
+            ContrDiaruiaTotal = (Sp * Npessoas);
             if (ContrDiaruiaTotal <= 1500)
             {
                 Pd = 1;
@@ -96,7 +119,7 @@ namespace ECCUSBET.Model
             return Pd;
         }
 
-        public int TaxadeAcumulacao(int intervalo, double temperatura) //Por padrão é passavem por valor 
+        private int TaxadeAcumulacao()
         {
             SizingView sizingView = new SizingView();
             if (sizingView.txtIntervalodeLimpeza.Text == null)
@@ -105,15 +128,15 @@ namespace ECCUSBET.Model
             }
 
 
-            if (intervalo == 1)
+            if (Intervalo == 1)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if (temperatura <= 10)
+                    if (Temperatura <= 10)
                     {
                         Ta = 94;
                     }
-                    else if (temperatura > 10 && temperatura <= 20)
+                    else if (Temperatura > 10 && Temperatura <= 20)
                     {
                         Ta = 65;
                     }
@@ -123,15 +146,15 @@ namespace ECCUSBET.Model
                     }
                 }
             }
-            else if (intervalo == 2)
+            else if (Intervalo == 2)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if (temperatura <= 10)
+                    if (Temperatura <= 10)
                     {
                         Ta = 134;
                     }
-                    else if (temperatura > 10 && temperatura <= 20)
+                    else if (Temperatura > 10 && Temperatura <= 20)
                     {
                         Ta = 105;
                     }
@@ -141,15 +164,15 @@ namespace ECCUSBET.Model
                     }
                 }
             }
-            else if (intervalo == 3)
+            else if (Intervalo == 3)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if (temperatura <= 10)
+                    if (Temperatura <= 10)
                     {
                         Ta = 174;
                     }
-                    else if (temperatura > 10 && temperatura <= 20)
+                    else if (Temperatura > 10 && Temperatura <= 20)
                     {
                         Ta = 145;
                     }
@@ -159,15 +182,15 @@ namespace ECCUSBET.Model
                     }
                 }
             }
-            else if (intervalo == 4)
+            else if (Intervalo == 4)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if (temperatura <= 10)
+                    if (Temperatura <= 10)
                     {
                         Ta = 214;
                     }
-                    else if (temperatura > 10 && temperatura <= 20)
+                    else if (Temperatura > 10 && Temperatura <= 20)
                     {
                         Ta = 185;
                     }
@@ -177,15 +200,15 @@ namespace ECCUSBET.Model
                     }
                 }
             }
-            else if (intervalo == 5)
+            else if (Intervalo == 5)
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if (temperatura <= 10)
+                    if (Temperatura <= 10)
                     {
                         Ta = 254;
                     }
-                    else if (temperatura > 10 && temperatura <= 20)
+                    else if (Temperatura > 10 && Temperatura <= 20)
                     {
                         Ta = 255;
                     }
@@ -198,11 +221,11 @@ namespace ECCUSBET.Model
             return Ta;
         }
 
-        public double ProfundidadeMedia()
+        private double ProfundidadeMedia()
         {
             SizingView sizingView = new SizingView();
-            double Pmini, Pmax, Pmedio;
-            Pmedio = 0;
+            double Pmini, Pmax;
+
             if (VolUtio == 0)
             {
                 sizingView.TxtProfundidadeMedia.Text = "0";
@@ -212,28 +235,28 @@ namespace ECCUSBET.Model
             {
                 Pmini = 1.2;
                 Pmax = 2.2;
-                Pmedio = ((Pmini + Pmax) / 2);
+                ProfundidadeM = ((Pmini + Pmax) / 2);
             }
             else if (VolUtio > 6 && VolUtio <= 10)
             {
                 Pmini = 1.5;
                 Pmax = 2.5;
-                Pmedio = ((Pmini + Pmax) / 2);
+                ProfundidadeM = ((Pmini + Pmax) / 2);
             }
             else if (VolUtio > 10)
             {
                 Pmini = 1.8;
                 Pmax = 2.8;
-                Pmedio = ((Pmini + Pmax) / 2);
+                ProfundidadeM = ((Pmini + Pmax) / 2);
             }
-            return Pmedio;
+            return ProfundidadeM;
         }
 
-        public double Dimensionamento(int npessoas)
+        public double Dimensionamento()
         {
-
-            VolUtio = (1000 + npessoas * ((Sp * Pd) + (Ta * CLodoFresco))) / 1000;
-            AreadaBet = (npessoas * MetroQuadradoporHab);
+           
+            VolUtio = (1000 + Npessoas * ((SelecaoPadrao() * PeriododeDetencao()) + (TaxadeAcumulacao() * CLodoFresco))) / 1000;
+            AreadaBet = (Npessoas * MetroQuadradoporHab);
             VolTotal = AreadaBet * ProfundidadeMedia();
             return VolUtio + AreadaBet + VolTotal;
         }

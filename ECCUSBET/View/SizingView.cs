@@ -15,6 +15,7 @@ Austregíselo Junior     20/10/2020 Layout básico OK;
 Austregíselo Junior     29/10/2020 Dimensionamento quase terminado, falta a correção de bugs;
 Austregíselo Junior     30/10/2020 Dimensionamento básico OK; 
 Austregíselo Junior     31/10/2020 Aplicando orientação a objeto, faltou verificar a saída de dados;
+Austregíselo Junior     02/11/2020 Saída de dados OK;
 
 -------------------------------------------------------------------------------------------------------------------------
 Histórico de Bugs        
@@ -45,8 +46,6 @@ namespace ECCUSBET.View
             InitializeComponent();
         }
 
-
-
         public void BtnCalcular_Click(object sender, EventArgs e)
         {
 
@@ -58,24 +57,19 @@ namespace ECCUSBET.View
             {
                 try
                 {
-                    BET_Entities bet_entities = new BET_Entities();
-
+                    // Entrada de dados + instanciação com construtor
                     string padrao = BoxSelecaoPadrao.Text;
-                    bet_entities.SelecaoPadrao(padrao);
-
-                    int Npessoas = int.Parse(txtNPessoas.Text);
-
-                    bet_entities.PeriododeDetencao(Npessoas);
-
+                    int npessoas = int.Parse(txtNPessoas.Text);
                     int intervalo = int.Parse(txtIntervalodeLimpeza.Text, CultureInfo.InvariantCulture);
                     double temperatura = double.Parse(txtTemperatura.Text, CultureInfo.InvariantCulture);
-                    bet_entities.TaxadeAcumulacao(intervalo, temperatura);
+                    BET_Entities bet_entities = new BET_Entities(padrao, npessoas, intervalo, temperatura);
+                   
+                    // Chamada do métododo 
+                    bet_entities.Dimensionamento();
 
-                    bet_entities.Dimensionamento(Npessoas);
-
-
+                    // Saída de dados
                     TxtVolUtio.Text = bet_entities.VolUtio.ToString("F2", CultureInfo.InvariantCulture);
-                    TxtProfundidadeMedia.Text = bet_entities.ProfundidadeMedia().ToString("F2", CultureInfo.InvariantCulture);
+                    TxtProfundidadeMedia.Text = bet_entities.ProfundidadeM.ToString("F2", CultureInfo.InvariantCulture);
                     TxtAreadaBet.Text = bet_entities.AreadaBet.ToString("F2", CultureInfo.InvariantCulture);
                     TxtVolTotal.Text = bet_entities.VolTotal.ToString("F2", CultureInfo.InvariantCulture);
                 }
@@ -88,6 +82,7 @@ namespace ECCUSBET.View
 
         }
 
+        // --------------------------- Mecânica do layout --------------------------------//
         private void ManualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManualView manualView = new ManualView();
