@@ -12,20 +12,28 @@ Autor                   Data       Descrição
 Austregíselo Junior     15/10/2020 Criação do APP e Início do layout;
 Austregíselo Junior     19/10/2020 desenvolvendo Layout;
 Austregíselo Junior     20/10/2020 Layout básico OK;
-Austregíselo Junior     29/10/2020 Dimensionamento quase terminado, falta a correção de bigs;
+Austregíselo Junior     29/10/2020 Dimensionamento quase terminado, falta a correção de bugs;
+Austregíselo Junior     30/10/2020 Dimensionamento básico OK; 
+Austregíselo Junior     31/10/2020 Aplicando orientação a objeto, faltou verificar a saída de dados;
 
 -------------------------------------------------------------------------------------------------------------------------
 Histórico de Bugs        
 Autor                   Data       Descrição  
-Austregíselo Junior     29/10/2020 Quando o textbox não tem nada ele estoura uma exerção;
+Austregíselo Junior     29/10/2020 Quando o textbox não tem nada ele estoura uma exerção. -> A correção foi por todo o cálculo num bloco try e gerar 
+                                   uma análise de erro pra tudo, já que eram os mesmos erros.
+
 ----------------------  ---------- --------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------------------------------------------
 */
 
+using ECCUSBET.Model;
 using System;
+using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq.Expressions;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace ECCUSBET.View
@@ -37,260 +45,47 @@ namespace ECCUSBET.View
             InitializeComponent();
         }
 
-        //------------------------------  Variáveis de escopo global  ----------------------------//
-        double VolUtio, ContrDiaruiaTotal, Rp, AreadaBet;
-        int CLodoFresco = 1;
-        int MetroQuadradoporHab = 2;
-        int Rc, Rt, NPessoas;
 
 
-        //----------------------- Funçôes com adição de programação defenciva  -------------------//
-        private int ContribuicaoDiaria()
+        public void BtnCalcular_Click(object sender, EventArgs e)
         {
-            if ((string)BoxSelecaoPadrao.SelectedItem == "Residência de baixo padrão")  //Converção explicita (casting)
+
+            if (((string)BoxSelecaoPadrao.SelectedItem == null))
             {
-                Rc = 100;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Residência de médio padrão")
-            {
-                Rc = 130;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Residência de alto padrão")
-            {
-                Rc = 160;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Hotel (exceto lavanderia e cozinha)")
-            {
-                Rc = 100;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Alojamento provisório")
-            {
-                Rc = 80;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Edfícios públicos ou comerciais")
-            {
-                Rc = 50;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Escolas")
-            {
-                Rc = 50;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Bares")
-            {
-                Rc = 6;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Restaurantes e similares")
-            {
-                Rc = 25;
+                MessageBox.Show("Erro, escolha o padrão de ocupação!", MessageBoxButtons.OK.ToString());
             }
             else
-                MessageBox.Show("Erro, o padrão de ocupação!", MessageBoxButtons.OK.ToString());
-            return Rc;
-        }
+            {
 
-
-        private double PeriododeDetencao()
-        {
-            if (txtNPessoas.Text == "0" || txtNPessoas.Text == "")
-            {
-                Rp = 0;
-                            }
-
-            ContrDiaruiaTotal = (Rc * NPessoas);
-            if (ContrDiaruiaTotal <= 1500)
-            {
-                Rp = 1;
-            }
-            else if (ContrDiaruiaTotal <= 1500)
-            {
-                Rp = 1;
-            }
-            else if (ContrDiaruiaTotal >= 1501 && ContrDiaruiaTotal <= 3000)
-            {
-                Rp = 0.92;
-            }
-            else if (ContrDiaruiaTotal >= 3001 && ContrDiaruiaTotal <= 4500)
-            {
-                Rp = 0.83;
-            }
-            else if (ContrDiaruiaTotal >= 4501 && ContrDiaruiaTotal <= 6000)
-            {
-                Rp = 0.75;
-            }
-            else if (ContrDiaruiaTotal >= 6001 && ContrDiaruiaTotal <= 7500)
-            {
-                Rp = 0.67;
-            }
-            else if (ContrDiaruiaTotal >= 7501 && ContrDiaruiaTotal <= 9000)
-            {
-                Rp = 0.58;
-            }
-            else
-                Rp = 0.5;
-            return Rp;
-        }
-
-        public int TaxadeAcumulacao(int intervalo, int temperatura) //Por padrão é passavem por valor 
-        {
-            if (txtIntervalodeLimpeza.Text == "0" || txtTemperatura.Text == "")
-            {
-                Rt = 0;
-            }
-
-
-            if (intervalo == 1)
-            {
-                for (int i = 0; i < 3; i++)
+                try
                 {
-                    if (temperatura <= 10)
-                    {
-                        Rt = 94;
-                    }
-                    else if (temperatura > 10 && temperatura <= 20)
-                    {
-                        Rt = 65;
-                    }
-                    else
-                    {
-                        Rt = 57;
-                    }
+                    BET_Entities bet_entities = new BET_Entities();
+
+                    string padrao = BoxSelecaoPadrao.Text;
+                     bet_entities.SelecaoPadrao(padrao);
+
+                    int Npessoas = int.Parse(txtNPessoas.Text);
+
+                    bet_entities.PeriododeDetencao(Npessoas);
+
+                    int intervalo = int.Parse(txtIntervalodeLimpeza.Text, CultureInfo.InvariantCulture);
+                    double temperatura = double.Parse(txtTemperatura.Text, CultureInfo.InvariantCulture);
+                    bet_entities.TaxadeAcumulacao(intervalo, temperatura);
+
+                   bet_entities.Dimensionamento(Npessoas);
+
+                   // BET_Entities bet_entities = new BET_Entities(Npessoas, intervalo, temperatura, padrao);
+
+                    TxtVolUtio.Text = bet_entities.VolUtio.ToString("F2", CultureInfo.InvariantCulture);
+                    TxtProfundidadeMedia.Text = bet_entities.ProfundidadeMedia().ToString("F2", CultureInfo.InvariantCulture);
+                    TxtAreadaBet.Text = bet_entities.AreadaBet.ToString("F2", CultureInfo.InvariantCulture);
+                    TxtVolTotal.Text = bet_entities.VolTotal.ToString("F2", CultureInfo.InvariantCulture);
                 }
-            }
-            else if (intervalo == 2)
-            {
-                for (int i = 0; i < 3; i++)
+                catch (FormatException)
                 {
-                    if (temperatura <= 10)
-                    {
-                        Rt = 134;
-                    }
-                    else if (temperatura > 10 && temperatura <= 20)
-                    {
-                        Rt = 105;
-                    }
-                    else
-                    {
-                        Rt = 97;
-                    }
-                }
-            }
-            else if (intervalo == 3)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (temperatura <= 10)
-                    {
-                        Rt = 174;
-                    }
-                    else if (temperatura > 10 && temperatura <= 20)
-                    {
-                        Rt = 145;
-                    }
-                    else
-                    {
-                        Rt = 137;
-                    }
-                }
-            }
-            else if (intervalo == 4)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (temperatura <= 10)
-                    {
-                        Rt = 214;
-                    }
-                    else if (temperatura > 10 && temperatura <= 20)
-                    {
-                        Rt = 185;
-                    }
-                    else
-                    {
-                        Rt = 177;
-                    }
-                }
-            }
-            else if (intervalo == 5)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (temperatura <= 10)
-                    {
-                        Rt = 254;
-                    }
-                    else if (temperatura > 10 && temperatura <= 20)
-                    {
-                        Rt = 255;
-                    }
-                    else
-                    {
-                        Rt = 217;
-                    }
-                }
-            }
-            return Rt;
-        }
-
-        private double ProfundidadeUtil()
-        {
-            double Pmini, Pmax, Pmedio;
-            Pmedio = 0;
-            if (VolUtio == 0)
-            {
-                TxtProfundidadeMedia.Text = "0";
-            }
-
-            if (VolUtio <= 6)
-            {
-                Pmini = 1.2;
-                Pmax = 2.2;
-                Pmedio = ((Pmini + Pmax) / 2);
-            }
-            else if (VolUtio > 6 && VolUtio <= 10)
-            {
-                Pmini = 1.5;
-                Pmax = 2.5;
-                Pmedio = ((Pmini + Pmax) / 2);
-            }
-            else if (VolUtio > 10)
-            {
-                Pmini = 1.8;
-                Pmax = 2.8;
-                Pmedio = ((Pmini + Pmax) / 2);
-            }
-            return Pmedio;
-        }
-
-        private void BtnCalcular_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                double PD;
-                int CD, TA;
-
-                CD = ContribuicaoDiaria();
-                TA = TaxadeAcumulacao(intervalo: int.Parse(txtIntervalodeLimpeza.Text),
-                                      temperatura: int.Parse(txtTemperatura.Text));
-                NPessoas = int.Parse(txtNPessoas.Text);
-                PD = PeriododeDetencao();
-
-                VolUtio = (1000 + NPessoas * ((CD * PD) + (TA * CLodoFresco))) / 1000;
-                TxtVolUtio.Text = VolUtio.ToString("F2");
-
-                if (CD == 0 || PD == 0 || TA == 0) // programação defenciva
-                {
-                    TxtVolUtio.Text = "0";
+                    MessageBox.Show("Erro, adicione o ítem!", MessageBoxButtons.OK.ToString());
                 }
 
-                TxtProfundidadeMedia.Text = ProfundidadeUtil().ToString("F2");
-                AreadaBet = (NPessoas * MetroQuadradoporHab);
-                TxtAreadaBet.Text = AreadaBet.ToString("F2");
-                TxtVolTotal.Text = (AreadaBet * ProfundidadeUtil()).ToString("F2");
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Erro, adicione o ítem!", MessageBoxButtons.OK.ToString());
             }
 
         }

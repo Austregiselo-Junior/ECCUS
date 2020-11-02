@@ -30,9 +30,9 @@ namespace ECCUSBET.View
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SizingView));
             this.label2 = new System.Windows.Forms.Label();
             this.BtnCalcular = new System.Windows.Forms.Button();
@@ -161,13 +161,14 @@ namespace ECCUSBET.View
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(10, 315);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(554, 172);
             this.dataGridView1.TabIndex = 21;
             // 
@@ -221,9 +222,9 @@ namespace ECCUSBET.View
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(430, 114);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(141, 15);
+            this.label7.Size = new System.Drawing.Size(103, 15);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Profundidade média (m)";
+            this.label7.Text = "Profundidade (m)";
             // 
             // TxtProfundidadeMedia
             // 
@@ -499,25 +500,25 @@ namespace ECCUSBET.View
             this.Chart1.BackImageTransparentColor = System.Drawing.Color.White;
             this.Chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             this.Chart1.BorderSkin.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            chartArea1.AxisX.Title = "Custo total";
-            chartArea1.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
-            chartArea1.AxisY.Title = "Volume total";
-            chartArea1.Name = "ChartArea1";
-            this.Chart1.ChartAreas.Add(chartArea1);
+            chartArea2.AxisX.Title = "Custo total";
+            chartArea2.AxisY.TextOrientation = System.Windows.Forms.DataVisualization.Charting.TextOrientation.Rotated270;
+            chartArea2.AxisY.Title = "Volume total";
+            chartArea2.Name = "ChartArea1";
+            this.Chart1.ChartAreas.Add(chartArea2);
             this.Chart1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            legend1.Name = "Legend1";
-            this.Chart1.Legends.Add(legend1);
+            legend2.Name = "Legend1";
+            this.Chart1.Legends.Add(legend2);
             this.Chart1.Location = new System.Drawing.Point(54, 288);
             this.Chart1.Name = "Chart1";
             this.Chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
             this.Chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueMember = "Profundidade";
-            series1.YValueMembers = "Volume útil";
-            this.Chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.XValueMember = "Profundidade";
+            series2.YValueMembers = "Volume útil";
+            this.Chart1.Series.Add(series2);
             this.Chart1.Size = new System.Drawing.Size(465, 210);
             this.Chart1.TabIndex = 22;
             this.Chart1.Text = "Chart1";
@@ -656,8 +657,8 @@ namespace ECCUSBET.View
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabDimensionamento;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtTemperatura;
-        private System.Windows.Forms.ComboBox BoxSelecaoPadrao;
+        public System.Windows.Forms.TextBox txtTemperatura;
+        public System.Windows.Forms.ComboBox BoxSelecaoPadrao;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -666,15 +667,15 @@ namespace ECCUSBET.View
         private System.Windows.Forms.TabPage tabAnalize;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox TxtVolTotal;
+        public System.Windows.Forms.TextBox TxtVolTotal;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox TxtAreadaBet;
+        public System.Windows.Forms.TextBox TxtAreadaBet;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox TxtProfundidadeMedia;
+        public System.Windows.Forms.TextBox TxtProfundidadeMedia;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtNPessoas;
-        private System.Windows.Forms.TextBox txtIntervalodeLimpeza;
-        private System.Windows.Forms.TextBox TxtVolUtio;
+        public System.Windows.Forms.TextBox txtNPessoas;
+        public System.Windows.Forms.TextBox txtIntervalodeLimpeza;
+        public System.Windows.Forms.TextBox TxtVolUtio;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem limparToolStripMenuItem;
