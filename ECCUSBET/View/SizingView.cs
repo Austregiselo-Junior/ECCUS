@@ -56,13 +56,12 @@ namespace ECCUSBET.View
             }
             else
             {
-
                 try
                 {
                     BET_Entities bet_entities = new BET_Entities();
 
                     string padrao = BoxSelecaoPadrao.Text;
-                     bet_entities.SelecaoPadrao(padrao);
+                    bet_entities.SelecaoPadrao(padrao);
 
                     int Npessoas = int.Parse(txtNPessoas.Text);
 
@@ -72,9 +71,8 @@ namespace ECCUSBET.View
                     double temperatura = double.Parse(txtTemperatura.Text, CultureInfo.InvariantCulture);
                     bet_entities.TaxadeAcumulacao(intervalo, temperatura);
 
-                   bet_entities.Dimensionamento(Npessoas);
+                    bet_entities.Dimensionamento(Npessoas);
 
-                   // BET_Entities bet_entities = new BET_Entities(Npessoas, intervalo, temperatura, padrao);
 
                     TxtVolUtio.Text = bet_entities.VolUtio.ToString("F2", CultureInfo.InvariantCulture);
                     TxtProfundidadeMedia.Text = bet_entities.ProfundidadeMedia().ToString("F2", CultureInfo.InvariantCulture);

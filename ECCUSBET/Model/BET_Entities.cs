@@ -17,20 +17,6 @@ namespace ECCUSBET.Model
         readonly int MetroQuadradoporHab = 2;
         int Sp, Ta;
 
-        /*
-        double Temperatura;
-        int Intervalo, NumerodePessoas;
-        string Padrao;
-
-        public BET_Entities(int numerodepessoas, int intervalo, double temperatura, string padrao)
-        {
-            NumerodePessoas = numerodepessoas;
-            Intervalo = intervalo;
-            Temperatura = temperatura;
-            Padrao = padrao;
-        }
-        */
-
         public int SelecaoPadrao(string padrao)
         {
             if (padrao == "Residência de baixo padrão")
