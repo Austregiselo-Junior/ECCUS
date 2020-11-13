@@ -1,8 +1,10 @@
-﻿using ECCUSBET.View;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ECCUSBET
+namespace ECCUSTanqueSeptico
 {
     static class Program
     {
@@ -10,11 +12,11 @@ namespace ECCUSBET
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
         [STAThread]
-        public static void Main()
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StartView());
+            Application.Run(new Form1());
         }
     }
 }

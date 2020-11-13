@@ -1,90 +1,45 @@
-﻿using ECCUSBET.View;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿/*
 
 namespace ECCUSBET.Model
 {
-    class BET_Entities
-    { //------------------------------  Variáveis de escopo global  ----------------------------//
 
-
-        private readonly string Padrao;
+    class Dimensi_Entities
+    {
+        //------------------------------  Variáveis de escopo global  ----------------------------//
         private readonly int Npessoas, Intervalo;
         private readonly double Temperatura;
         private double ContrDiaruiaTotal, Pd;
         private readonly int CLodoFresco = 1;
         private readonly int MetroQuadradoporHab = 2;
-        private int Sp, Ta;
+        private readonly int Sp;
+        private int Ta;
 
-        //-----  Construtor padrão (Irrelevando ao código, já que a instanciação é feita por métodos e parâmetros)  ----------------------------//
-        public BET_Entities()
+
+        //------------------------  Propriedades usadas no dimensionamento  ------------------------//
+        public double VolUtio { get; set; }
+        public double AreadaBet { get; set; }
+        public double VolTotal { get; set; }
+        public double ProfundidadeM { get; set; }
+        public Ocupacao_Enums SelecaoPadrao { get; set; }
+
+
+        //--------------------------------  Construtores   ----------------------------//
+        public Dimensi_Entities()
         {
         }
 
-        public BET_Entities(string padrao, int npessoas, int intervalo, double temperatura)
+        public Dimensi_Entities(Ocupacao_Enums selecaoPadrao, int npessoas, int intervalo, double temperatura)
         {
-            Padrao = padrao;
+            SelecaoPadrao = selecaoPadrao;
             Npessoas = npessoas;
             Intervalo = intervalo;
             Temperatura = temperatura;
         }
 
-        public double VolUtio { get; private set; }
-        public double AreadaBet { get; private set; }
-        public double VolTotal { get; private set; }
-        public double ProfundidadeM { get; private set; }
-
-
-        //------------------  Métodos que recebem os parametros a partir do View  -----------------//
-        private int SelecaoPadrao()
-        {
-            if (Padrao == "Residência de baixo padrão")
-            {
-                Sp = 100;
-            }
-            else if (Padrao == "Residência de médio padrão")
-            {
-                Sp = 130;
-            }
-            else if (Padrao == "Residência de alto padrão")
-            {
-                Sp = 160;
-            }
-            else if (Padrao == "Hotel (exceto lavanderia e cozinha)")
-            {
-                Sp = 100;
-            }
-            else if (Padrao == "Alojamento provisório")
-            {
-                Sp = 80;
-            }
-            else if (Padrao == "Edfícios públicos ou comerciais")
-            {
-                Sp = 50;
-            }
-            else if (Padrao == "Escolas")
-            {
-                Sp = 50;
-            }
-            else if (Padrao == "Bares")
-            {
-                Sp = 6;
-            }
-            else if (Padrao == "Restaurantes e similares")
-            {
-                Sp = 25;
-            }
-            return Sp;
-        }
+        //------------------  Métodos persolanizados  -----------------//
 
         private double PeriododeDetencao()
         {
-
             ContrDiaruiaTotal = (Sp * Npessoas);
             if (ContrDiaruiaTotal <= 1500)
             {
@@ -254,16 +209,19 @@ namespace ECCUSBET.Model
 
         public double Dimensionamento()
         {
-           
-            VolUtio = (1000 + Npessoas * ((SelecaoPadrao() * PeriododeDetencao()) + (TaxadeAcumulacao() * CLodoFresco))) / 1000;
+
+            VolUtio = (1000 + Npessoas * (((double)SelecaoPadrao * PeriododeDetencao()) + (TaxadeAcumulacao() * CLodoFresco))) / 1000;
             AreadaBet = (Npessoas * MetroQuadradoporHab);
             VolTotal = AreadaBet * ProfundidadeMedia();
             return VolUtio + AreadaBet + VolTotal;
+
+
         }
 
     }
 
 }
+*/
 
 
 
