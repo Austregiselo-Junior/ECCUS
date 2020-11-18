@@ -52,11 +52,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Entities\Dimensi_Entities.cs" />
+    <Compile Include="Model\Entities\Bet_Entities.cs" />
+    <Compile Include="Model\Entities\Pneu_Entities.cs" />
     <Compile Include="Model\Enums\Ocupacao_Enums.cs" />
     <Compile Include="Model\Services\%28N_Usado%29Edi_Arquivo_Service.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="View\DevView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,12 +90,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="View\DevView.resx">
       <DependentUpon>DevView.cs</DependentUpon>
     </EmbeddedResource>

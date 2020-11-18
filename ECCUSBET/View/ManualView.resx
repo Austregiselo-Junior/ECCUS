@@ -118,15 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Label6.Text" xml:space="preserve">
-    <value>Na barra de menu, no topo da aplicação se encontram as abas de Arquivo, Manual e Desenvolvimento. Ao clicar em Arquivo aparecem os botões Limpar, Carregar, Excluir e Sair, onde respectivamente temos as ações de limpeza dos dados, carregamento de dados salvos, exclusão de dados e sair a aplicação. Na aba Manual contem o manual do usuário e na aba Desdenvolvimento contem informações e contatos da equipe desenvolvedora, da ONG Instituto ECCUS e código fonte no GitHub. 
-Observação: Algumas funcionalidades ainda estão sendo implementadas.</value>
+    <value>Na barra de menu, no topo da aplicação se encontram as abas de Arquivo, Manual e Desenvolvimento. Ao clicar em Arquivo aparecem os botões Limpar, Salvar, Carregar, Excluir e Sair, onde respectivamente temos as ações de limpeza dos dados, salvamento das tabelas ,carregamento de dados salvos, exclusão de dados salvos e sair a aplicação. Na aba Manual contem o manual do usuário e na aba Desdenvolvimento contêm informações e contatos da equipe desenvolvedora, da ONG Instituto ECCUS e código fonte no GitHub. 
+Observação: Os dados serão salvos sempre no caminho "C:\ECCUS_Dados" e os nomes dos arquivos serão "DadosTB_dimensionamento.txt" e "DadosTB_Orcamento.txt".</value>
   </data>
   <data name="Label4.Text" xml:space="preserve">
-    <value>Nessa parte será feita a análise dos possíveis dimensionamentos, os dados que estarão disponível na tebela são os memos dos dados de saída da aba dimensionamento. Após a obtenção do histórico de dimensionamento é possível gerar um gráfico (Volume útil X Profundidade) ao apertar o botão analizar. Também é possível exportar os dados contidos na tabela para a aplicação Excel da Microsoft, clicando no botão exportar. Assim o usuária terá toda a tabela do ECCUSBET em Excel app.</value>
+    <value>Nessa parte serão feitas as análises dos possíveis dimensionamentos e precificaçôes dos mesmos. As dimensões obtidas na aba "dimensionamento" serão postas automatcamente na tabela de dimensionamento, na aba análise. Para obtenção do custo total da bacia a partir dos serviços, ferramentas ou ítens adicionados em sua respectiva área ("Dados da tabela de orçamento"). Ao clicar no botão adicionar os dados adicionados serão postos na tabela de orçamento e nela pode deletar uma linha da tabela o oter o custo total clicando no respenctivo botão.
+
+</value>
   </data>
   <data name="Label1.Text" xml:space="preserve">
-    <value>Inicialmente é necessário adicionar ao software os dados de entrada, selecionando o padrão de residência, colocando a temperatura do ambiente, tempo entre lipeza da bacia e a quantidade de pessoas atendidas. Dessa forma ao clicar no botão "Dimensionar" os resultados serão exibidos, volume útil, produndidade, área e volume total.
-Observação: A norma tecnica tomada como base para essa aplicação, NBR 7229/93, afirma que para tanque retangular a relação entre comprimento/largura deve ser entre 2:1 e 4:1, assim o software não delimita tais dimensões porque entende que elas podem variar segundo a necessidade do local, mas é importante assegurar o volume total fornecido pelo mesmo.
+    <value>Inicialmente é necessário adicionar ao software os dados de entrada, selecionando o padrão de ocupação, colocando a temperatura do ambiente, tempo entre lipeza da bacia,  quantidade de pessoas atendidas e os dados do pneu que será usado conforme imagem exemplo. Dessa forma ao clicar no botão "Dimensionar" os resultados serão exibidos, volume útil, largura, comprimento da bacia, profundidade e quantidade de pneus usado. Observação: A norma tecnica tomada como base para essa aplicação, NBR 7229/93, afirma que para tanque retangular a relação entre comprimento/largura deve ser entre 2:1 e 4:1, assim o software não delimita tais dimensões porque entende que elas podem variar segundo a necessidade do local, mas é importante assegurar as dimenções fornecidas pelo mesmo.
 </value>
   </data>
 </root>

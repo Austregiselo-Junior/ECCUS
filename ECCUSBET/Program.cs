@@ -15,6 +15,7 @@ namespace ECCUSBET
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new StartView());
+            Application.Run(new SizingView());
         }
     }
 }

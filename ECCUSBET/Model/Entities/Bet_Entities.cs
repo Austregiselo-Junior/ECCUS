@@ -5,12 +5,12 @@ using System.Text.RegularExpressions;
 
 namespace ECCUSBET.Model.Entities
 {
-    class Dimensi_Entities
+    class Bet_Entities
     {
         //------------------------------  Variáveis de escopo global  ----------------------------//
         private readonly int Npessoas, Intervalo;
         private readonly double Temperatura;
-        private double ContrDiaruiaTotal, Pd, AlturaPneu, RaioPeneu, LarguraPneu;
+        private double ContrDiaruiaTotal, Pd;
         private readonly int CLodoFresco = 1;
         private int Ta;
 
@@ -20,18 +20,16 @@ namespace ECCUSBET.Model.Entities
         public double VolUtio { get; set; }
         public double ProfundidadeM { get; set; }
         public Ocupacao_Enums SelecaoPadrao { get; set; }
-        public double VolPneu { get; set; }
-        public double Perfil { get; set; }
-        public int N_Roda { get; set; }
         public double LarguradaBet { get; set; }
+        public double ComprimentoBet { get; set; }
 
 
         //--------------------------------  Construtores   ----------------------------//
-        public Dimensi_Entities()
+        public Bet_Entities()
         {
         }
 
-        public Dimensi_Entities(Ocupacao_Enums selecaoPadrao, int npessoas, int intervalo, double temperatura)
+        public Bet_Entities(Ocupacao_Enums selecaoPadrao, int npessoas, int intervalo, double temperatura)
         {
             SelecaoPadrao = selecaoPadrao;
             Npessoas = npessoas;
@@ -39,12 +37,6 @@ namespace ECCUSBET.Model.Entities
             Temperatura = temperatura;
         }
 
-        public Dimensi_Entities(double larguraPneu, double perfil, int n_Roda)
-        {
-            LarguraPneu = larguraPneu;
-            Perfil = perfil;
-            N_Roda = n_Roda;
-        }
 
 
 
@@ -53,10 +45,6 @@ namespace ECCUSBET.Model.Entities
         {
             ContrDiaruiaTotal = ((double)SelecaoPadrao * Npessoas);
             if (ContrDiaruiaTotal <= 1500)
-            {
-                Pd = 1;
-            }
-            else if (ContrDiaruiaTotal <= 1500)
             {
                 Pd = 1;
             }
@@ -93,96 +81,87 @@ namespace ECCUSBET.Model.Entities
                 Ta = 0;
             }
 
-
             if (Intervalo == 1)
             {
-                for (int i = 0; i < 3; i++)
+                if (Temperatura <= 10)
                 {
-                    if (Temperatura <= 10)
-                    {
-                        Ta = 94;
-                    }
-                    else if (Temperatura > 10 && Temperatura <= 20)
-                    {
-                        Ta = 65;
-                    }
-                    else
-                    {
-                        Ta = 57;
-                    }
+                    Ta = 94;
                 }
+                else if (Temperatura > 10 && Temperatura <= 20)
+                {
+                    Ta = 65;
+                }
+                else
+                {
+                    Ta = 57;
+                }
+
             }
             else if (Intervalo == 2)
             {
-                for (int i = 0; i < 3; i++)
+
+                if (Temperatura <= 10)
                 {
-                    if (Temperatura <= 10)
-                    {
-                        Ta = 134;
-                    }
-                    else if (Temperatura > 10 && Temperatura <= 20)
-                    {
-                        Ta = 105;
-                    }
-                    else
-                    {
-                        Ta = 97;
-                    }
+                    Ta = 134;
                 }
+                else if (Temperatura > 10 && Temperatura <= 20)
+                {
+                    Ta = 105;
+                }
+                else
+                {
+                    Ta = 97;
+                }
+
             }
             else if (Intervalo == 3)
             {
-                for (int i = 0; i < 3; i++)
+
+                if (Temperatura <= 10)
                 {
-                    if (Temperatura <= 10)
-                    {
-                        Ta = 174;
-                    }
-                    else if (Temperatura > 10 && Temperatura <= 20)
-                    {
-                        Ta = 145;
-                    }
-                    else
-                    {
-                        Ta = 137;
-                    }
+                    Ta = 174;
                 }
+                else if (Temperatura > 10 && Temperatura <= 20)
+                {
+                    Ta = 145;
+                }
+                else
+                {
+                    Ta = 137;
+                }
+
             }
             else if (Intervalo == 4)
             {
-                for (int i = 0; i < 3; i++)
+                if (Temperatura <= 10)
                 {
-                    if (Temperatura <= 10)
-                    {
-                        Ta = 214;
-                    }
-                    else if (Temperatura > 10 && Temperatura <= 20)
-                    {
-                        Ta = 185;
-                    }
-                    else
-                    {
-                        Ta = 177;
-                    }
+                    Ta = 214;
                 }
+                else if (Temperatura > 10 && Temperatura <= 20)
+                {
+                    Ta = 185;
+                }
+                else
+                {
+                    Ta = 177;
+                }
+
             }
             else if (Intervalo == 5)
             {
-                for (int i = 0; i < 3; i++)
+                if (Temperatura <= 10)
                 {
-                    if (Temperatura <= 10)
-                    {
-                        Ta = 254;
-                    }
-                    else if (Temperatura > 10 && Temperatura <= 20)
-                    {
-                        Ta = 255;
-                    }
-                    else
-                    {
-                        Ta = 217;
-                    }
+                    Ta = 254;
                 }
+                else if (Temperatura > 10 && Temperatura <= 20)
+                {
+                    Ta = 255;
+                }
+                else
+                {
+                    Ta = 217;
+                }
+
             }
             return Ta;
         }
@@ -199,9 +178,7 @@ namespace ECCUSBET.Model.Entities
 
             if (VolUtio <= 6)
             {
-                Pmini = 1.2;
-                Pmax = 2.2;
-                ProfundidadeM = ((Pmini + Pmax) / 2);
+                ProfundidadeM = 1.5;
             }
             else if (VolUtio > 6 && VolUtio <= 10)
             {
@@ -224,21 +201,16 @@ namespace ECCUSBET.Model.Entities
             return VolUtio;
         }
 
-        public double Dimensi_Pneu()
+        public double Largura_Bet(double largura)
         {
-            AlturaPneu = (Perfil / 100) * LarguraPneu;
-            RaioPeneu = AlturaPneu / 2;
-
-            VolPneu = Math.PI * Math.Pow(RaioPeneu, 2) * LarguraPneu;
-           // VolPneu /= 1000000000;
-            return VolPneu;
+            LarguradaBet = (largura * 0.001) + 1.2;
+            return LarguradaBet;
         }
 
-        public double Largura_Bet()
+        public double ComprimentodaBaciat(int quantidade, double largura)
         {
-            LarguraPneu /= 1000;
-            LarguradaBet = LarguraPneu + 1.2;
-            return LarguradaBet;
+            ComprimentoBet = quantidade * largura;
+            return ComprimentoBet;
         }
 
     }

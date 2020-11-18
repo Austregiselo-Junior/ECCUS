@@ -7,10 +7,10 @@
         Escolas = 50,
         Edficios_publicos_ou_comerciais = 50,
         Alojamento_provisorio = 80,
-        exceto_lavanderia_e_cozinha = 100,
-        Residencia_de_baixo_padrao = 100,
-        Residencia_de_medio_padrao = 130,
-        Residencia_de_alto_padrao = 160
+        Hotel_exceto_lavanderia_e_cozinha = 100,
+        Residencia = 36,
+        
     }
+
 }
 

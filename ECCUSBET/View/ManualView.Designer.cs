@@ -56,7 +56,7 @@
             this.Label6.Location = new System.Drawing.Point(1, 331);
             this.Label6.MaximumSize = new System.Drawing.Size(500, 500);
             this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(500, 112);
+            this.Label6.Size = new System.Drawing.Size(500, 120);
             this.Label6.TabIndex = 13;
             this.Label6.Text = resources.GetString("Label6.Text");
             this.Label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -80,7 +80,7 @@
             this.Label4.Location = new System.Drawing.Point(1, 198);
             this.Label4.MaximumSize = new System.Drawing.Size(500, 500);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(500, 96);
+            this.Label4.Size = new System.Drawing.Size(500, 105);
             this.Label4.TabIndex = 11;
             this.Label4.Text = resources.GetString("Label4.Text");
             this.Label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -89,7 +89,7 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(4, 18);
+            this.Label2.Location = new System.Drawing.Point(4, 9);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(117, 16);
             this.Label2.TabIndex = 10;
@@ -101,7 +101,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.Label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(1, 35);
+            this.Label1.Location = new System.Drawing.Point(1, 26);
             this.Label1.MaximumSize = new System.Drawing.Size(500, 500);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(500, 137);

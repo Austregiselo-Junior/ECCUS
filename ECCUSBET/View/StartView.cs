@@ -12,10 +12,7 @@ namespace ECCUSBET.View
 
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
-
-            SizingView sizingView = new SizingView();
-            sizingView.Show();
-            this.WindowState = FormWindowState.Minimized;
+            this.Close();
         }
 
         private void BntFechar_Click(object sender, EventArgs e)

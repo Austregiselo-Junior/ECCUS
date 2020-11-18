@@ -23,8 +23,12 @@ Austregíselo Junior     09/11/2020 Fazendo limpeza dos dados, salvamento, exclu
 Austregíselo Junior     10/11/2020 Alterando os cálculos segundo a consultoria de Icaro do ECCUS (esperar os dados do eccusoftware);
 Austregíselo Junior     10/11/2020 Criando e implementando os serviços de edição de arquivo; 
 Austregíselo Junior     11/11/2020 Não consegui realizar a atividade acima como queria (inplementar o serviçonuma classe específica);
-Austregíselo Junior     11/11/2020 Implementando o cálculo de custo total, segundpo a tabela de custo;
-
+Austregíselo Junior     11/11/2020 Implementando o cálculo de custo total, segundoo a tabela de custo;
+Austregíselo Junior     16/11/2020 Implementando o dimensionamento completo com os pneus e mecânica da tabela de orçamento;
+Austregíselo Junior     17/11/2020 Implementando edição de arquivo da tabela de orçamento (OK);
+Austregíselo Junior     17/11/2020 Retirei análise gráfica porque achei sem sentido;
+Austregíselo Junior     18/11/2020 Alterei o leyout e a mecânica de abrir telas no StartView.cs e Program.cs;
+Austregíselo Junior     18/11/2020 Adicionei programação defensiva para que o usuário não calcule nada com dado = 0;
 
 -------------------------------------------------------------------------------------------------------------------------
 Histórico de Bugs        
@@ -47,8 +51,7 @@ using System;
 using System.Globalization;
 using System.Windows.Forms;
 using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using System.Runtime.Serialization;
+
 
 namespace ECCUSBET.View
 {
@@ -68,6 +71,18 @@ namespace ECCUSBET.View
             {
                 MessageBox.Show("Escolha o padrão de ocupação!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else if (txtNPessoas.Text == "0" || txtIntervalodeLimpeza.Text == "0")
+            {
+                MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (txtTemperatura.Text == "0" || TxtLarguraPneu.Text == "0")
+            {
+                MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (TxtPerfil.Text == "0" || TxtAro.Text == "0")
+            {
+                MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
             {
                 try
@@ -82,23 +97,27 @@ namespace ECCUSBET.View
                     int aro = int.Parse(TxtAro.Text, CultureInfo.InvariantCulture);
 
 
-                    Dimensi_Entities bet_entities = new Dimensi_Entities(ocupacao, npessoas, intervalo, temperatura);
-                    new Dimensi_Entities(larguraPneu, perfil, aro);
+                    Bet_Entities bet = new Bet_Entities(ocupacao, npessoas, intervalo, temperatura);
+                    Pneu_Entities pneu = new Pneu_Entities(larguraPneu, perfil, aro);
 
                     // Chamada do métododo 
-                    bet_entities.Dimensionamento();
-                    bet_entities.ProfundidadeMedia();
-                    bet_entities.Dimensi_Pneu();
-                    bet_entities.Largura_Bet();
+                    bet.Dimensionamento();
+                    bet.ProfundidadeMedia();
+                    pneu.Dimensi_Pneu();
+                    bet.Largura_Bet(larguraPneu);
+                    pneu.QTE_Pneu(bet.VolUtio);
+                    bet.ComprimentodaBaciat(pneu.QTEPneus, pneu.LarguraPneu);
 
                     // Saída de dados
-                    TxtVolUtio.Text = bet_entities.VolUtio.ToString("F2", CultureInfo.InvariantCulture);
-                    TxtProfundidadeMedia.Text = bet_entities.ProfundidadeM.ToString("F2", CultureInfo.InvariantCulture);
-                    TxtVolPneu.Text = bet_entities.VolPneu.ToString("P2", CultureInfo.InvariantCulture);
-                    TxtLarguradaBet.Text = bet_entities.LarguradaBet.ToString("F2", CultureInfo.InvariantCulture);
+                    TxtVolUtio.Text = bet.VolUtio.ToString("F2", CultureInfo.InvariantCulture);
+                    TxtProfundidadeMedia.Text = bet.ProfundidadeM.ToString("F2", CultureInfo.InvariantCulture);
+                    TxtVolPneu.Text = pneu.VolPneu.ToString("F2", CultureInfo.InvariantCulture);
+                    TxtLarguradaBet.Text = bet.LarguradaBet.ToString("F2", CultureInfo.InvariantCulture);
+                    TxtQtePeneus.Text = pneu.QTEPneus.ToString("F2", CultureInfo.InvariantCulture);
+                    TxtComprimento.Text = bet.ComprimentoBet.ToString("F2", CultureInfo.InvariantCulture);
 
-                    // Add os resultados ao grid
-                    GridDimens.Rows.Add(TxtVolUtio.Text, TxtProfundidadeMedia.Text);
+                    // Add os resultados ao grid de dimensionamento
+                    GridDimens.Rows.Add(TxtVolUtio.Text, TxtProfundidadeMedia.Text, TxtQtePeneus.Text, TxtComprimento.Text, TxtLarguradaBet.Text);
                 }
                 catch (FormatException)
                 {
@@ -126,40 +145,71 @@ namespace ECCUSBET.View
             }
         }
 
+        private void BtnExcluirLinha_TbOrcamento_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja excluir a linha selecionada?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+
+                if (GrigOrcamento.CurrentRow == null)
+                {
+                    MessageBox.Show("Selecione uma linha da tabela!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    GrigOrcamento.Rows.RemoveAt(GrigOrcamento.CurrentRow.Index);
+                }
+            }
+        }
+
         private void BtnAddGridOrcamento_Click(object sender, EventArgs e)
         {
             double precoUnidade, unidade, precoTotal;
-            precoUnidade = double.Parse(TxtPreco_Uni.Text);
-            unidade = double.Parse(TxtUnidade.Text);
 
-            precoTotal = unidade * precoUnidade;
-            TxtPreco_total.Text = precoTotal.ToString("F2", CultureInfo.InvariantCulture);
+            if (TxtServico_Equi.Text == "")
+            {
+                MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (TxtPreco_Uni.Text == "0" || TxtUnidade.Text == "0")
+            {
+                MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                _ = TxtServico_Equi.Text;
 
-            GrigOrcamento.Rows.Add(TxtServico_Equi.Text, TxtUnidade.Text, TxtPreco_Uni.Text, TxtPreco_total.Text);
+                try
+                {
+                    precoUnidade = double.Parse(TxtPreco_Uni.Text);
+                    unidade = double.Parse(TxtUnidade.Text);
+
+                    precoTotal = unidade * precoUnidade;
+                    TxtPreco_total.Text = precoTotal.ToString("F2", CultureInfo.InvariantCulture);
+
+                    // add os dados ao grid de orçamento
+                    GrigOrcamento.Rows.Add(TxtServico_Equi.Text, TxtUnidade.Text, TxtPreco_Uni.Text, TxtPreco_total.Text);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Adicione o ítem!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
 
         private void BtnCustoTotal_Click_1(object sender, EventArgs e)
         {
-            double quantia = 0;
-            double custo = 0;
+            double quantia;
+            double custoTotal = 0;
             int nlinhas = GrigOrcamento.Rows.Count;
-            for (int i = 0; i <= nlinhas; i++)
+
+            for (int i = 0; i < nlinhas; i++) // É dessa forma porque com 0 são 4 iterações pra 3 lnhas, assim i tem que ser < que nlinhas e não <=
             {
-                try
-                {
-                    quantia = (double)GrigOrcamento.Rows[i].Cells["TabPrecoTotal"].FormattedValue;
-                    custo += quantia;
-                }
-                catch (Exception)
-                {
-                    custo += quantia;
-
-                }
-
-
+                quantia = Convert.ToDouble(GrigOrcamento.Rows[i].Cells["TabPrecoTotal"].Value);
+                custoTotal += quantia;
             }
-            TxtCustoTotal.Text = custo.ToString("F2", CultureInfo.InvariantCulture);
+
+            TxtCustoTotal.Text = custoTotal.ToString("F2", CultureInfo.InvariantCulture);
         }
 
 
@@ -186,10 +236,24 @@ namespace ECCUSBET.View
             BoxSelecaoPadrao.SelectedItem = null;
             txtTemperatura.Clear();
             txtIntervalodeLimpeza.Clear();
-            txtNPessoas.ClearUndo();
+            txtNPessoas.Clear();
             TxtVolUtio.Clear();
             TxtProfundidadeMedia.Clear();
             GridDimens.Rows.Clear();
+            TxtServico_Equi.Clear();
+            TxtUnidade.Clear();
+            TxtPreco_Uni.Clear();
+            TxtPreco_total.Clear();
+            GrigOrcamento.Rows.Clear();
+            TxtLarguradaBet.Clear();
+            TxtComprimento.Clear();
+            TxtProfundidadeMedia.Clear();
+            TxtQtePeneus.Clear();
+            TxtLarguraPneu.Clear();
+            TxtPerfil.Clear();
+            TxtAro.Clear();
+            TxtVolPneu.Clear();
+            TxtCustoTotal.Clear();
         }
 
 
@@ -197,22 +261,50 @@ namespace ECCUSBET.View
         // Só está aqui porque não consigo editar o grid e nem salvar arquivo com dados do grid a partir de uma classe, mesmo herdando a classe que contem o grid
 
         readonly string pathPasta = @"C:\";
-        readonly string pathArquivo = @"C:\ECCUS_Dados\Dados.txt";
+        readonly string pathArquivoTBDimensionamento = @"C:\ECCUS_Dados\DadosTB_dimensionamento.txt";
+        readonly string pathArquivoTBOrcamento = @"C:\ECCUS_Dados\DadosTB_Orcamento.txt";
         StreamWriter sw;
         StreamReader sr;
 
         private void SalvarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // TB dimensionamento
             try
             {
                 Directory.CreateDirectory(pathPasta + "\\ECCUS_Dados");
-                using (sw = new StreamWriter(pathArquivo))
+                using (sw = new StreamWriter(pathArquivoTBDimensionamento))
                 {
                     for (int i = 0; i < GridDimens.RowCount; i++)
                     {
 
-                        string linha = $"{ GridDimens.Rows[i].Cells["VolUtioGrid"].Value };" +
-                              $"{ GridDimens.Rows[i].Cells["ProfundidadeGrid"].Value};";
+                        string linha = $"{ GridDimens.Rows[i].Cells["TabVolutio"].Value };" +
+                              $"{ GridDimens.Rows[i].Cells["TabProfundidade"].Value};" +
+                              $"{ GridDimens.Rows[i].Cells["TabTipodePneu"].Value };" +
+                              $"{ GridDimens.Rows[i].Cells["TabComprimento"].Value};" +
+                              $"{ GridDimens.Rows[i].Cells["TabLargura"].Value};";
+                        sw.WriteLine(linha);
+                    }
+                }
+            }
+            catch (IOException msg)
+            {
+                MessageBox.Show($"Erro, {msg.Message}", MessageBoxButtons.OK.ToString());
+            }
+            MessageBox.Show("Arquivo salvo!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // TB orçamento
+            try
+            {
+                Directory.CreateDirectory(pathPasta + "\\ECCUS_Dados");
+                using (sw = new StreamWriter(pathArquivoTBOrcamento))
+                {
+                    for (int i = 0; i < GrigOrcamento.RowCount; i++)
+                    {
+
+                        string linha = $"{ GrigOrcamento.Rows[i].Cells["TabSercicoeEquipamento"].Value };" +
+                              $"{ GrigOrcamento.Rows[i].Cells["TabUnidade"].Value};" +
+                              $"{ GrigOrcamento.Rows[i].Cells["TabPrecoUnitario"].Value };" +
+                              $"{ GrigOrcamento.Rows[i].Cells["TabPrecoTotal"].Value};";
                         sw.WriteLine(linha);
                     }
                 }
@@ -223,24 +315,39 @@ namespace ECCUSBET.View
             }
             MessageBox.Show("Arquivo salvo!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
         private void ExcluirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // TB dimensionamento
             try
             {
-                File.Delete(pathArquivo);
+                File.Delete(pathArquivoTBDimensionamento);
             }
             catch (IOException msg)
             {
                 MessageBox.Show($"Erro, {msg.Message}", MessageBoxButtons.OK.ToString());
             }
             MessageBox.Show("Arquivo excluido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // TB orçamento
+            try
+            {
+                File.Delete(pathArquivoTBOrcamento);
+            }
+            catch (IOException msg)
+            {
+                MessageBox.Show($"Erro, {msg.Message}", MessageBoxButtons.OK.ToString());
+            }
+            MessageBox.Show("Arquivo excluido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
+        // TB dimensionamento
         private void CarregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                sr = File.OpenText(pathArquivo);
+                sr = File.OpenText(pathArquivoTBDimensionamento);
                 while (!sr.EndOfStream)
                 {
                     string linha = sr.ReadLine();
@@ -256,7 +363,26 @@ namespace ECCUSBET.View
             {
                 if (sr != null) sr.Close();
             }
+
+            // TB orçamento
+            try
+            {
+                sr = File.OpenText(pathArquivoTBOrcamento);
+                while (!sr.EndOfStream)
+                {
+                    string linha = sr.ReadLine();
+                    string[] vect = linha.Split(';');
+                    GrigOrcamento.Rows.Add(vect);
+                }
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Não há arquivo salvo!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (sr != null) sr.Close();
+            }
         }
-              
     }
 }
