@@ -29,6 +29,10 @@ Austregíselo Junior     17/11/2020 Implementando edição de arquivo da tabela 
 Austregíselo Junior     17/11/2020 Retirei análise gráfica porque achei sem sentido;
 Austregíselo Junior     18/11/2020 Alterei o leyout e a mecânica de abrir telas no StartView.cs e Program.cs;
 Austregíselo Junior     18/11/2020 Adicionei programação defensiva para que o usuário não calcule nada com dado = 0;
+Austregíselo Junior     19/11/2020 Fazendo correção de portugûes e melhorando o código com implementação de serviços de edição de arquivos;
+Austregíselo Junior     20/11/2020 Ajuste na largura da bet = diâmetro do pneu + 1.0;
+Austregíselo Junior     20/11/2020 Verificar a questão dos limites e pesquisar sobre as configurações, certificados e assinaturas;
+Austregíselo Junior     23/11/2020 Substituindo as igualdades por equals(A diferença é que == compara a refeência e o equals compara o conteúdo do objeto);
 
 -------------------------------------------------------------------------------------------------------------------------
 Histórico de Bugs        
@@ -47,16 +51,17 @@ Austregíselo Junior     10/11/2020 Salvar e carregar não então funcionando, a
 
 using ECCUSBET.Model.Entities;
 using ECCUSBET.Model.Enums;
+using ECCUSBET.Model.Services;
 using System;
 using System.Globalization;
 using System.Windows.Forms;
-using System.IO;
 
 
 namespace ECCUSBET.View
 {
     public partial class SizingView : Form
     {
+
         public SizingView()
         {
             InitializeComponent();
@@ -71,15 +76,15 @@ namespace ECCUSBET.View
             {
                 MessageBox.Show("Escolha o padrão de ocupação!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (txtNPessoas.Text == "0" || txtIntervalodeLimpeza.Text == "0")
+            else if (txtNPessoas.Text.Equals("0") || txtIntervalodeLimpeza.Text.Equals("0"))
             {
                 MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (txtTemperatura.Text == "0" || TxtLarguraPneu.Text == "0")
+            else if (txtTemperatura.Text.Equals("0") || TxtLarguraPneu.Text.Equals("0"))
             {
                 MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (TxtPerfil.Text == "0" || TxtAro.Text == "0")
+            else if (TxtPerfil.Text.Equals("0") || TxtAro.Text.Equals("0"))
             {
                 MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -100,21 +105,21 @@ namespace ECCUSBET.View
                     Bet_Entities bet = new Bet_Entities(ocupacao, npessoas, intervalo, temperatura);
                     Pneu_Entities pneu = new Pneu_Entities(larguraPneu, perfil, aro);
 
+
                     // Chamada do métododo 
                     bet.Dimensionamento();
                     bet.ProfundidadeMedia();
                     pneu.Dimensi_Pneu();
-                    bet.Largura_Bet(larguraPneu);
+                    bet.Largura_Bet(pneu.DiametroPneu);
                     pneu.QTE_Pneu(bet.VolUtio);
                     bet.ComprimentodaBaciat(pneu.QTEPneus, pneu.LarguraPneu);
 
-                    // Saída de dados
-                    TxtVolUtio.Text = bet.VolUtio.ToString("F2", CultureInfo.InvariantCulture);
-                    TxtProfundidadeMedia.Text = bet.ProfundidadeM.ToString("F2", CultureInfo.InvariantCulture);
-                    TxtVolPneu.Text = pneu.VolPneu.ToString("F2", CultureInfo.InvariantCulture);
-                    TxtLarguradaBet.Text = bet.LarguradaBet.ToString("F2", CultureInfo.InvariantCulture);
-                    TxtQtePeneus.Text = pneu.QTEPneus.ToString("F2", CultureInfo.InvariantCulture);
-                    TxtComprimento.Text = bet.ComprimentoBet.ToString("F2", CultureInfo.InvariantCulture);
+
+                    // Saída de dados (Esse tipo de saída só funciona porque passei o próprio form como parâmetro através do "this")
+                   
+                    bet.SaidadeDados(this);
+                    pneu.SaidadeDados(this);
+
 
                     // Add os resultados ao grid de dimensionamento
                     GridDimens.Rows.Add(TxtVolUtio.Text, TxtProfundidadeMedia.Text, TxtQtePeneus.Text, TxtComprimento.Text, TxtLarguradaBet.Text);
@@ -128,7 +133,6 @@ namespace ECCUSBET.View
 
 
         //--------------------------------- Mecânica das tabelas ---------------------------------------//
-
         private void BtnExcluirLinha_Click_1(object sender, EventArgs e)
         {
             if (MessageBox.Show("Deseja excluir a linha selecionada?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -165,11 +169,11 @@ namespace ECCUSBET.View
         {
             double precoUnidade, unidade, precoTotal;
 
-            if (TxtServico_Equi.Text == "")
+            if (TxtServico_Equi.Text.Equals(""))
             {
                 MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (TxtPreco_Uni.Text == "0" || TxtUnidade.Text == "0")
+            else if (TxtPreco_Uni.Text.Equals("0") || TxtUnidade.Text.Equals("0"))
             {
                 MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -258,131 +262,23 @@ namespace ECCUSBET.View
 
 
         // -------------------------- Serviços de edição de arquivos apartir do grid -------------------//
-        // Só está aqui porque não consigo editar o grid e nem salvar arquivo com dados do grid a partir de uma classe, mesmo herdando a classe que contem o grid
 
-        readonly string pathPasta = @"C:\";
-        readonly string pathArquivoTBDimensionamento = @"C:\ECCUS_Dados\DadosTB_dimensionamento.txt";
-        readonly string pathArquivoTBOrcamento = @"C:\ECCUS_Dados\DadosTB_Orcamento.txt";
-        StreamWriter sw;
-        StreamReader sr;
+        readonly Arquivos_Service arquivos = new Arquivos_Service();
 
         private void SalvarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TB dimensionamento
-            try
-            {
-                Directory.CreateDirectory(pathPasta + "\\ECCUS_Dados");
-                using (sw = new StreamWriter(pathArquivoTBDimensionamento))
-                {
-                    for (int i = 0; i < GridDimens.RowCount; i++)
-                    {
-
-                        string linha = $"{ GridDimens.Rows[i].Cells["TabVolutio"].Value };" +
-                              $"{ GridDimens.Rows[i].Cells["TabProfundidade"].Value};" +
-                              $"{ GridDimens.Rows[i].Cells["TabTipodePneu"].Value };" +
-                              $"{ GridDimens.Rows[i].Cells["TabComprimento"].Value};" +
-                              $"{ GridDimens.Rows[i].Cells["TabLargura"].Value};";
-                        sw.WriteLine(linha);
-                    }
-                }
-            }
-            catch (IOException msg)
-            {
-                MessageBox.Show($"Erro, {msg.Message}", MessageBoxButtons.OK.ToString());
-            }
-            MessageBox.Show("Arquivo salvo!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // TB orçamento
-            try
-            {
-                Directory.CreateDirectory(pathPasta + "\\ECCUS_Dados");
-                using (sw = new StreamWriter(pathArquivoTBOrcamento))
-                {
-                    for (int i = 0; i < GrigOrcamento.RowCount; i++)
-                    {
-
-                        string linha = $"{ GrigOrcamento.Rows[i].Cells["TabSercicoeEquipamento"].Value };" +
-                              $"{ GrigOrcamento.Rows[i].Cells["TabUnidade"].Value};" +
-                              $"{ GrigOrcamento.Rows[i].Cells["TabPrecoUnitario"].Value };" +
-                              $"{ GrigOrcamento.Rows[i].Cells["TabPrecoTotal"].Value};";
-                        sw.WriteLine(linha);
-                    }
-                }
-            }
-            catch (IOException msg)
-            {
-                MessageBox.Show($"Erro, {msg.Message}", MessageBoxButtons.OK.ToString());
-            }
-            MessageBox.Show("Arquivo salvo!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            arquivos.SalvarArquivo(this);
         }
 
         private void ExcluirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TB dimensionamento
-            try
-            {
-                File.Delete(pathArquivoTBDimensionamento);
-            }
-            catch (IOException msg)
-            {
-                MessageBox.Show($"Erro, {msg.Message}", MessageBoxButtons.OK.ToString());
-            }
-            MessageBox.Show("Arquivo excluido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // TB orçamento
-            try
-            {
-                File.Delete(pathArquivoTBOrcamento);
-            }
-            catch (IOException msg)
-            {
-                MessageBox.Show($"Erro, {msg.Message}", MessageBoxButtons.OK.ToString());
-            }
-            MessageBox.Show("Arquivo excluido!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            arquivos.ExcluirArquivo();
         }
 
-        // TB dimensionamento
         private void CarregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                sr = File.OpenText(pathArquivoTBDimensionamento);
-                while (!sr.EndOfStream)
-                {
-                    string linha = sr.ReadLine();
-                    string[] vect = linha.Split(';');
-                    GridDimens.Rows.Add(vect);
-                }
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("Não há arquivo salvo!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (sr != null) sr.Close();
-            }
-
-            // TB orçamento
-            try
-            {
-                sr = File.OpenText(pathArquivoTBOrcamento);
-                while (!sr.EndOfStream)
-                {
-                    string linha = sr.ReadLine();
-                    string[] vect = linha.Split(';');
-                    GrigOrcamento.Rows.Add(vect);
-                }
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("Não há arquivo salvo!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (sr != null) sr.Close();
-            }
+            arquivos.CarregarArquivo(this);
         }
+
     }
 }

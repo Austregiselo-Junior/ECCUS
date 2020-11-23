@@ -1,7 +1,6 @@
 ﻿using ECCUSBET.View;
 using ECCUSBET.Model.Enums;
-using System;
-using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace ECCUSBET.Model.Entities
 {
@@ -15,14 +14,13 @@ namespace ECCUSBET.Model.Entities
         private int Ta;
 
 
-
         //------------------------  Propriedades usadas no dimensionamento  ------------------------//
         public double VolUtio { get; set; }
         public double ProfundidadeM { get; set; }
         public Ocupacao_Enums SelecaoPadrao { get; set; }
         public double LarguradaBet { get; set; }
         public double ComprimentoBet { get; set; }
-
+      
 
         //--------------------------------  Construtores   ----------------------------//
         public Bet_Entities()
@@ -36,8 +34,6 @@ namespace ECCUSBET.Model.Entities
             Intervalo = intervalo;
             Temperatura = temperatura;
         }
-
-
 
 
         //------------------  Métodos persolanizados  -----------------//
@@ -76,7 +72,7 @@ namespace ECCUSBET.Model.Entities
         private int TaxadeAcumulacao()
         {
             SizingView sizingView = new SizingView();
-            if (sizingView.txtIntervalodeLimpeza.Text == null)
+            if (sizingView.txtIntervalodeLimpeza.Text == null) //Compara se tem referência nula
             {
                 Ta = 0;
             }
@@ -201,9 +197,10 @@ namespace ECCUSBET.Model.Entities
             return VolUtio;
         }
 
-        public double Largura_Bet(double largura)
+        public double Largura_Bet(double diametroPeneu)
         {
-            LarguradaBet = (largura * 0.001) + 1.2;
+          
+            LarguradaBet = diametroPeneu + 1.0;
             return LarguradaBet;
         }
 
@@ -213,6 +210,13 @@ namespace ECCUSBET.Model.Entities
             return ComprimentoBet;
         }
 
+        public void SaidadeDados(SizingView sizingView)
+        {
+            sizingView.TxtVolUtio.Text = VolUtio.ToString("F2", CultureInfo.InvariantCulture);
+            sizingView.TxtProfundidadeMedia.Text = ProfundidadeM.ToString("F2", CultureInfo.InvariantCulture);
+            sizingView.TxtLarguradaBet.Text = LarguradaBet.ToString("F2", CultureInfo.InvariantCulture);
+            sizingView.TxtComprimento.Text = ComprimentoBet.ToString("F2", CultureInfo.InvariantCulture);
+        }
     }
 }
 

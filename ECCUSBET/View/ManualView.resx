@@ -122,7 +122,7 @@
 Observação: Os dados serão salvos sempre no caminho "C:\ECCUS_Dados" e os nomes dos arquivos serão "DadosTB_dimensionamento.txt" e "DadosTB_Orcamento.txt".</value>
   </data>
   <data name="Label4.Text" xml:space="preserve">
-    <value>Nessa parte serão feitas as análises dos possíveis dimensionamentos e precificaçôes dos mesmos. As dimensões obtidas na aba "dimensionamento" serão postas automatcamente na tabela de dimensionamento, na aba análise. Para obtenção do custo total da bacia a partir dos serviços, ferramentas ou ítens adicionados em sua respectiva área ("Dados da tabela de orçamento"). Ao clicar no botão adicionar os dados adicionados serão postos na tabela de orçamento e nela pode deletar uma linha da tabela o oter o custo total clicando no respenctivo botão.
+    <value>Nessa parte serão feitas as análises dos possíveis dimensionamentos e precificaçôes dos mesmos. As dimensões obtidas na aba "dimensionamento" serão postas automatcamente na tabela de dimensionamento, na aba análise. Para obtenção do custo total da bacia a partir dos serviços, ferramentas ou ítens adicionados em sua respectiva área ("Dados da tabela de orçamento"). Ao clicar no botão adicionar os dados adicionados serão postos na tabela de orçamento e nela pode deletar uma linha da tabela o obter o custo total clicando no respectivo botão.
 
 </value>
   </data>

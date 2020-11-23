@@ -80,7 +80,7 @@
             this.BtnIniciar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.BtnIniciar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnIniciar.Location = new System.Drawing.Point(201, 108);
+            this.BtnIniciar.Location = new System.Drawing.Point(204, 108);
             this.BtnIniciar.Name = "BtnIniciar";
             this.BtnIniciar.Size = new System.Drawing.Size(103, 34);
             this.BtnIniciar.TabIndex = 8;
@@ -95,7 +95,7 @@
             this.label1.Font = new System.Drawing.Font("Arial", 21.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(171, 71);
+            this.label1.Location = new System.Drawing.Point(174, 71);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(172, 34);
             this.label1.TabIndex = 7;
@@ -129,6 +129,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StartView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StartView";
             this.ResumeLayout(false);
             this.PerformLayout();

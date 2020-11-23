@@ -72,7 +72,12 @@ namespace ECCUSBET.View
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
             this.tabAnalize = new System.Windows.Forms.TabPage();
+            this.label32 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.BtnAddGridOrcamento = new System.Windows.Forms.Button();
             this.TxtPreco_total = new System.Windows.Forms.TextBox();
@@ -87,7 +92,7 @@ namespace ECCUSBET.View
             this.BtnExcluirLinha_TbOrcamento = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.GridDimens = new System.Windows.Forms.DataGridView();
-            this.TabVolutio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TabVolutil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabProfundidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabTipodePneu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabComprimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,11 +121,6 @@ namespace ECCUSBET.View
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.desenvolvimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label33 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabDimensionamento.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -130,10 +130,10 @@ namespace ECCUSBET.View
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabAnalize.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridDimens)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrigOrcamento)).BeginInit();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -415,9 +415,9 @@ namespace ECCUSBET.View
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.Location = new System.Drawing.Point(6, 240);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(86, 15);
+            this.label15.Size = new System.Drawing.Size(79, 15);
             this.label15.TabIndex = 9;
-            this.label15.Text = "Tipo de peneu";
+            this.label15.Text = "Tipo de pneu";
             // 
             // label3
             // 
@@ -452,9 +452,9 @@ namespace ECCUSBET.View
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(19, 188);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(176, 15);
+            this.label6.Size = new System.Drawing.Size(137, 15);
             this.label6.TabIndex = 4;
-            this.label6.Text = "Número de pessoas (1 - 50) =  ";
+            this.label6.Text = "Número de pessoas  =  ";
             // 
             // label1
             // 
@@ -579,6 +579,16 @@ namespace ECCUSBET.View
             this.tabAnalize.Text = "Análise";
             this.tabAnalize.UseVisualStyleBackColor = true;
             // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.Location = new System.Drawing.Point(861, 208);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(23, 15);
+            this.label32.TabIndex = 36;
+            this.label32.Text = "R$";
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSlateGray;
@@ -601,6 +611,46 @@ namespace ECCUSBET.View
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(447, 509);
             this.panel2.TabIndex = 30;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.Location = new System.Drawing.Point(61, 485);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(155, 15);
+            this.label33.TabIndex = 37;
+            this.label33.Text = "Modelo ilustrativo (internet)";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(61, 262);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(300, 223);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 36;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.Location = new System.Drawing.Point(231, 166);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(23, 15);
+            this.label31.TabIndex = 35;
+            this.label31.Text = "R$";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(28, 166);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(23, 15);
+            this.label30.TabIndex = 34;
+            this.label30.Text = "R$";
             // 
             // label25
             // 
@@ -743,7 +793,7 @@ namespace ECCUSBET.View
             this.GridDimens.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.GridDimens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridDimens.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TabVolutio,
+            this.TabVolutil,
             this.TabProfundidade,
             this.TabTipodePneu,
             this.TabComprimento,
@@ -754,12 +804,12 @@ namespace ECCUSBET.View
             this.GridDimens.Size = new System.Drawing.Size(479, 164);
             this.GridDimens.TabIndex = 27;
             // 
-            // TabVolutio
+            // TabVolutil
             // 
-            this.TabVolutio.HeaderText = "Volume útio (m³)";
-            this.TabVolutio.Name = "TabVolutio";
-            this.TabVolutio.ReadOnly = true;
-            this.TabVolutio.Width = 90;
+            this.TabVolutil.HeaderText = "Volume útil (m³)";
+            this.TabVolutil.Name = "TabVolutil";
+            this.TabVolutil.ReadOnly = true;
+            this.TabVolutil.Width = 90;
             // 
             // TabProfundidade
             // 
@@ -1009,56 +1059,6 @@ namespace ECCUSBET.View
             this.desenvolvimentoToolStripMenuItem.Text = "Desenvolvimento";
             this.desenvolvimentoToolStripMenuItem.Click += new System.EventHandler(this.DesenvolvimentoToolStripMenuItem_Click);
             // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(28, 166);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(23, 15);
-            this.label30.TabIndex = 34;
-            this.label30.Text = "R$";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.Location = new System.Drawing.Point(231, 166);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(23, 15);
-            this.label31.TabIndex = 35;
-            this.label31.Text = "R$";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(861, 208);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(23, 15);
-            this.label32.TabIndex = 36;
-            this.label32.Text = "R$";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(61, 262);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(300, 223);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 36;
-            this.pictureBox3.TabStop = false;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(61, 485);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(155, 15);
-            this.label33.TabIndex = 37;
-            this.label33.Text = "Modelo ilustrativo (internet)";
-            // 
             // SizingView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1070,7 +1070,8 @@ namespace ECCUSBET.View
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "SizingView";
-            this.Text = "SizingView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "ECCUSBET 2.0";
             this.tabControl1.ResumeLayout(false);
             this.tabDimensionamento.ResumeLayout(false);
             this.tabDimensionamento.PerformLayout();
@@ -1085,11 +1086,11 @@ namespace ECCUSBET.View
             this.tabAnalize.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GridDimens)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GrigOrcamento)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1129,7 +1130,7 @@ namespace ECCUSBET.View
         private System.Windows.Forms.ToolStripMenuItem manualToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem desenvolvimentoToolStripMenuItem;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridView GrigOrcamento;
+        public System.Windows.Forms.DataGridView GrigOrcamento;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox TxtCustoTotal;
@@ -1177,15 +1178,15 @@ namespace ECCUSBET.View
         private System.Windows.Forms.Label label28;
         public System.Windows.Forms.TextBox TxtPerfil;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TabVolutio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TabProfundidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TabTipodePneu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TabComprimento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TabLargura;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TabVolutil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TabProfundidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TabTipodePneu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TabComprimento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TabLargura;
     }
 }

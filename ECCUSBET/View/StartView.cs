@@ -17,7 +17,7 @@ namespace ECCUSBET.View
 
         private void BntFechar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void BtnMinimizar_Click(object sender, EventArgs e)

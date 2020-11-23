@@ -6,6 +6,8 @@ namespace ECCUSBET
 {
     static class Program
     {
+        public static SizingView SizingView { get; private set; }
+
         /// <summary>
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
@@ -16,6 +18,7 @@ namespace ECCUSBET
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new StartView());
             Application.Run(new SizingView());
+
         }
     }
 }
