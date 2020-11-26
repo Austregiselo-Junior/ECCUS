@@ -35,12 +35,12 @@ namespace ECCUSBET.Model.Entities
             return VolPneu;
         }
 
-        public int QTE_Pneu(double volutio)
+        public double QTE_Pneu(double volutio)
         {
-            QTEPneus = (int)(volutio / VolPneu);
+            QTEPneus = ((int)(volutio / VolPneu));
             return QTEPneus;
         }
-             
+
         public void SaidadeDados(SizingView sizingView)
         {
             sizingView.TxtVolPneu.Text = VolPneu.ToString("F2", CultureInfo.InvariantCulture);

@@ -29,6 +29,7 @@
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>2.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -74,6 +75,9 @@
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -112,6 +116,12 @@
     <Compile Include="View\ManualView.Designer.cs">
       <DependentUpon>ManualView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\NosAjude.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NosAjude.Designer.cs">
+      <DependentUpon>NosAjude.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SizingView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +144,9 @@
     <EmbeddedResource Include="View\ManualView.resx">
       <DependentUpon>ManualView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\NosAjude.resx">
+      <DependentUpon>NosAjude.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\SizingView.resx">
       <DependentUpon>SizingView.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,10 +156,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ECCUSBET_TemporaryKey.pfx" />
     <None Include="Properties\app.manifest" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>

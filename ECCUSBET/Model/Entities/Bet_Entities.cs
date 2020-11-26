@@ -20,7 +20,7 @@ namespace ECCUSBET.Model.Entities
         public Ocupacao_Enums SelecaoPadrao { get; set; }
         public double LarguradaBet { get; set; }
         public double ComprimentoBet { get; set; }
-      
+
 
         //--------------------------------  Construtores   ----------------------------//
         public Bet_Entities()
@@ -165,28 +165,22 @@ namespace ECCUSBET.Model.Entities
         public double ProfundidadeMedia()
         {
             SizingView sizingView = new SizingView();
-            double Pmini, Pmax;
-
             if (VolUtio == 0)
             {
-                sizingView.TxtProfundidadeMedia.Text = "0";
+                sizingView.TxtProfundidadeMedia.Text.Equals("0");
             }
 
             if (VolUtio <= 6)
             {
-                ProfundidadeM = 1.5;
+                ProfundidadeM = 1.2;
             }
             else if (VolUtio > 6 && VolUtio <= 10)
             {
-                Pmini = 1.5;
-                Pmax = 2.5;
-                ProfundidadeM = ((Pmini + Pmax) / 2);
+                ProfundidadeM = 1.5;
             }
-            else if (VolUtio > 10)
+            else 
             {
-                Pmini = 1.8;
-                Pmax = 2.8;
-                ProfundidadeM = ((Pmini + Pmax) / 2);
+                ProfundidadeM = 1.8;
             }
             return ProfundidadeM;
         }
@@ -199,7 +193,7 @@ namespace ECCUSBET.Model.Entities
 
         public double Largura_Bet(double diametroPeneu)
         {
-          
+
             LarguradaBet = diametroPeneu + 1.0;
             return LarguradaBet;
         }

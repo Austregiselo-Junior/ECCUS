@@ -117,34 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Label6.Text" xml:space="preserve">
-    <value>Na barra de menu, no topo da aplicação se encontram as abas de Arquivo, Manual e Desenvolvimento. Ao clicar em Arquivo aparecem os botões Limpar, Salvar, Carregar, Excluir e Sair, onde respectivamente temos as ações de limpeza dos dados, salvamento dos dados das tabelas, carregamento de dados da tabela, exclusão de dados da tabela e sair a aplicação. Na aba Manual contém o manual do usuário e na aba Desenvolvimento contêm informações e contatos da equipe desenvolvedora da ONG Instituto ECCUS e código fonte no GitHub.
- 
-Observação: Os dados serão salvos sempre no caminho "C:\ECCUS_Dados" e os nomes dos arquivos serão "DadosTB_dimensionamento.txt" e "DadosTB_Orcamento.txt". Caso seu dispositivo não tenha o local "C:" poderão ocorrer erros na aplicação.
-</value>
-  </data>
-  <data name="Label4.Text" xml:space="preserve">
-    <value>Nessa parte serão feitas as análises dos possíveis dimensionamentos e precificações dos mesmos. As dimensões obtidas na aba dimensionamento serão postas automaticamente na respectiva tabela que se encontra na aba de análise, após o usuário clicar no botão “Calcular”.
-A obtenção do custo total da bacia será feita a partir da adição dos serviços, ferramentas ou itens, adicionados em sua respectiva área ("Dados da tabela de orçamento"). Ao clicar no botão “Adicionar” os dados serão postos na tabela de orçamento e nela pode deletar uma linha selecionada da tabela ou obter o custo total clicando no respectivo botão.
-</value>
-  </data>
-  <data name="Label1.Text" xml:space="preserve">
-    <value>Inicialmente é necessário adicionar ao software os dados de entrada, selecionando o padrão de ocupação, colocando a temperatura do ambiente, tempo entre limpeza da bacia, quantidade de pessoas atendidas e os dados do pneu que será usado conforme imagem exemplo. Dessa forma ao clicar no botão "Calcular" os resultados serão exibidos, volume útil, largura da bacia, comprimento da bacia, profundidade da bacia e quantidade de pneus usados.
-Ao clicar o botão “Calcular”, além da obtenção dos dados de saída, os mesmos são exportados simultaneamente para a tabela de dimensionamento que se encontra na aba análise.
-</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>O presente projeto tomou como base a norma técnica da ABNT NBR 7229 - Projeto, construção e operação de sistemas de tanque sépticos. Elaborado pelo corpo técnico da ONG Instituto ECCUS, de João Pessoa-PB, o projeto se baseou no estudo “implantação do sistema de tratamento de esgoto, através de bacia de evapotranspiração na comunidade de Santa Luzia na Ilha do Baixio” e a partir de um projeto anterior onde constam os cálculos para o tratamento de efluentes e captação de águas pluviais para residência unifamiliar e seu Memorial descritivo. 
-Através da NT ABNT NBR 7229, conseguimos obter o volume útil do tanque séptico e considerando cada pneu como um cilindro, obtemos o volume de cada pneu. Dividindo o volume útil pelo volume de cada pneu temos o número de pneus que serão utilizados (arredondando para o inteiro mais próximo). Para calcular o comprimento da bacia foram multiplicados a quantidade de pneus e largura de cada pneu. Assim, a largura da bacia é obtida fazendo o diâmetro do pneu mais 1.0 m. Para a profundidade três condições foram consideradas: para volume útil menor ou igual a 6 m³ a profundidade adotada será 1.2 m, para volume útil maior que 6 m³ e menor igual a 10 m³, a profundidade será 1.5 m, e para volumes maiores a profundidade será 1.8 m. Esse padrão foi adotado no sentido de manter a temperatura no centro da bacia sempre elevada.
-É importante pontuar que, para obtenção do volume útil, a NBR 7229 tem como padrão as seguintes contribuições de esgoto: escolas = 50 L/habitante*dia, alojamento provisório = 80 L/habitante*dia, hotel (exceto, lavanderia e cozinha) = 100 L/habitante*dia e para residência temos 100, 130 e 160 L/habitante*dia. No entanto, a fim de diminuir o comprimento da bacia e destacando que a mesma só recebe águas negras, foi adotada uma contribuição de 36 L/habitante*dia, para residência, correspondendo a contribuição exclusiva da bacia sanitária.  Esse valor foi baseado no trabalho de DIAS, que apresentou um Estudo da viabilidade técnica, econômica e social do aproveitamento de água de chuva em residências na cidade de João Pessoa, conforme tabelas 5.2, 5.3 e 5.4, onde constam o consumo de água por pessoa, em bacia sanitária.
-</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>Referências:
-RIO DE JANEIRO. Associação Brasileira de Normas Técnicas. NBR 7229. Projeto, construção e operação de sistemas de tanque sépticos. 1993
-PAULO R. COSTA; MARIO F. COELHO. Implantação de sistema de tratamento de esgoto, através de bacia de evapotranspiração na comunidade de Santa Luzia na Ilha do Baixio, Iranduba/AM. Centro Universitário do Norte. 2018
-ONG INSTITUTO ECCUS. Memorial descritivo e de cálculo do projeto de tratamento de efluentes e captação de águas pluviais para residência unifamiliar. João Pessoa, PB. 2020
-ISABELLY C. DIAS. Dissertação de Mestrado. Estudo da viabilidade técnica, econômica e social do aproveitamento de água de chuva em residências na cidade de João Pessoa. Universidade Federal da Paraíba. Programa De Pós-Graduação em Engenharia Urbana. 2007
-</value>
-  </data>
 </root>

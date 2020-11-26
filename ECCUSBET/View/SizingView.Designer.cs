@@ -121,6 +121,7 @@ namespace ECCUSBET.View
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.desenvolvimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nosAjudeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabDimensionamento.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -423,7 +424,7 @@ namespace ECCUSBET.View
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 52);
+            this.label3.Location = new System.Drawing.Point(6, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 15);
             this.label3.TabIndex = 1;
@@ -477,7 +478,7 @@ namespace ECCUSBET.View
             "Escolas"});
             this.BoxSelecaoPadrao.Location = new System.Drawing.Point(15, 68);
             this.BoxSelecaoPadrao.Name = "BoxSelecaoPadrao";
-            this.BoxSelecaoPadrao.Size = new System.Drawing.Size(150, 21);
+            this.BoxSelecaoPadrao.Size = new System.Drawing.Size(182, 21);
             this.BoxSelecaoPadrao.TabIndex = 5;
             // 
             // txtIntervalodeLimpeza
@@ -671,7 +672,7 @@ namespace ECCUSBET.View
             this.BtnAddGridOrcamento.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
             this.BtnAddGridOrcamento.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveCaption;
             this.BtnAddGridOrcamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnAddGridOrcamento.Location = new System.Drawing.Point(169, 202);
+            this.BtnAddGridOrcamento.Location = new System.Drawing.Point(166, 202);
             this.BtnAddGridOrcamento.Name = "BtnAddGridOrcamento";
             this.BtnAddGridOrcamento.Size = new System.Drawing.Size(85, 26);
             this.BtnAddGridOrcamento.TabIndex = 32;
@@ -962,7 +963,8 @@ namespace ECCUSBET.View
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.arquivoToolStripMenuItem,
             this.manualToolStripMenuItem,
-            this.desenvolvimentoToolStripMenuItem});
+            this.desenvolvimentoToolStripMenuItem,
+            this.nosAjudeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(958, 24);
@@ -989,59 +991,59 @@ namespace ECCUSBET.View
             // 
             this.limparToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("limparToolStripMenuItem.Image")));
             this.limparToolStripMenuItem.Name = "limparToolStripMenuItem";
-            this.limparToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.limparToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.limparToolStripMenuItem.Text = "Limpar";
             this.limparToolStripMenuItem.Click += new System.EventHandler(this.LimparToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(142, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(116, 6);
             // 
             // salvarToolStripMenuItem
             // 
             this.salvarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salvarToolStripMenuItem.Image")));
             this.salvarToolStripMenuItem.Name = "salvarToolStripMenuItem";
-            this.salvarToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.salvarToolStripMenuItem.Text = "Salvar tabelas";
+            this.salvarToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.salvarToolStripMenuItem.Text = "Salvar";
             this.salvarToolStripMenuItem.Click += new System.EventHandler(this.SalvarToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(142, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(116, 6);
             // 
             // carregarToolStripMenuItem
             // 
             this.carregarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("carregarToolStripMenuItem.Image")));
             this.carregarToolStripMenuItem.Name = "carregarToolStripMenuItem";
-            this.carregarToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.carregarToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.carregarToolStripMenuItem.Text = "Carregar";
             this.carregarToolStripMenuItem.Click += new System.EventHandler(this.CarregarToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(142, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(116, 6);
             // 
             // excluirToolStripMenuItem
             // 
             this.excluirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("excluirToolStripMenuItem.Image")));
             this.excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
-            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.excluirToolStripMenuItem.Text = "Excluir";
             this.excluirToolStripMenuItem.Click += new System.EventHandler(this.ExcluirToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(142, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(116, 6);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("sairToolStripMenuItem.Image")));
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
             // 
@@ -1058,6 +1060,12 @@ namespace ECCUSBET.View
             this.desenvolvimentoToolStripMenuItem.Size = new System.Drawing.Size(111, 20);
             this.desenvolvimentoToolStripMenuItem.Text = "Desenvolvimento";
             this.desenvolvimentoToolStripMenuItem.Click += new System.EventHandler(this.DesenvolvimentoToolStripMenuItem_Click);
+            // 
+            // nosAjudeToolStripMenuItem
+            // 
+            this.nosAjudeToolStripMenuItem.Name = "nosAjudeToolStripMenuItem";
+            this.nosAjudeToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.nosAjudeToolStripMenuItem.Text = "Nos ajude";
             // 
             // SizingView
             // 
@@ -1188,5 +1196,6 @@ namespace ECCUSBET.View
         private System.Windows.Forms.DataGridViewTextBoxColumn TabTipodePneu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TabComprimento;
         private System.Windows.Forms.DataGridViewTextBoxColumn TabLargura;
+        private System.Windows.Forms.ToolStripMenuItem nosAjudeToolStripMenuItem;
     }
 }
