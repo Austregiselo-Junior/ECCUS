@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ECCUSBET.View
@@ -19,15 +12,12 @@ namespace ECCUSBET.View
 
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
-
-            SizingView sizingView = new SizingView();
-            sizingView.Show();
-            this.WindowState = FormWindowState.Minimized;
+            this.Close();
         }
 
         private void BntFechar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void BtnMinimizar_Click(object sender, EventArgs e)

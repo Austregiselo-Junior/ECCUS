@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ECCUSBET.Properties
+namespace ECCUSTanqueSeptico.Properties
 {
 
 

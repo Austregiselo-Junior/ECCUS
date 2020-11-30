@@ -1,16 +1,15 @@
-﻿using System.Resources;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associadas a um assembly.
-[assembly: AssemblyTitle("ECCUSBET")]
-[assembly: AssemblyDescription("Software para dimensionamento de bacia de evapotranspiração")]
+[assembly: AssemblyTitle("ECCUSTanqueSeptico")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Instituto ECCUS")]
-[assembly: AssemblyProduct("ECCUSBET")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("ECCUSTanqueSeptico")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -21,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // O GUID a seguir será destinado à ID de typelib se este projeto for exposto para COM
-[assembly: Guid("d76ddcbc-8a06-4e35-b489-004a4534bf0f")]
+[assembly: Guid("9c0a0265-a57a-47ab-95f8-daa3bf21c84b")]
 
 // As informações da versão de um assembly consistem nos quatro valores a seguir:
 //
@@ -33,6 +32,5 @@ using System.Runtime.InteropServices;
 // É possível especificar todos os valores ou usar como padrão os Números de Build e da Revisão
 // usando o "*" como mostrado abaixo:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("2.0.0.0")]
-[assembly: NeutralResourcesLanguage("pt-BR")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

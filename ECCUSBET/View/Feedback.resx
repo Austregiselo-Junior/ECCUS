@@ -117,4 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Label1.Text" xml:space="preserve">
+    <value>Essa versão do ECCUSBET dimensiona a Bacia de Evapotranspiração segundo metodologia descrita na aba “Manual do Usuário”, logo como na legislação brasileira não há referência normativa para dimensionamento dessa tecnologia, ela foi feita com base na norma técnica da ABNT NBR 7229 - Projeto, construção e operação de sistemas de tanque sépticos. No entanto sabemos que há outros métodos e por isso pedimos o seu feedback, para que em outras versões possamos aperfeiçoar o sistema para uma melhor experiência.
+
+</value>
+  </data>
 </root>

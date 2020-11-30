@@ -12,289 +12,212 @@ Autor                   Data       Descrição
 Austregíselo Junior     15/10/2020 Criação do APP e Início do layout;
 Austregíselo Junior     19/10/2020 desenvolvendo Layout;
 Austregíselo Junior     20/10/2020 Layout básico OK;
-Austregíselo Junior     29/10/2020 Dimensionamento quase terminado, falta a correção de bigs;
+Austregíselo Junior     29/10/2020 Dimensionamento quase terminado, falta a correção de bugs;
+Austregíselo Junior     30/10/2020 Dimensionamento básico OK; 
+Austregíselo Junior     31/10/2020 Adicionando construtores e propriedades, faltou verificar a saída de dados;
+Austregíselo Junior     02/11/2020 Saída de dados OK e adição de encapsulamento e enumeração;
+Austregíselo Junior     03/11/2020 Adicionando composição através das classes de entidades;
+Austregíselo Junior     04/11/2020 Desistir de add um DB, vou add os resultados direto no grid;
+Austregíselo Junior     05/11/2020 Tentando add os resultados direto no grid, mas ta dando bug;
+Austregíselo Junior     09/11/2020 Fazendo limpeza dos dados, salvamento, exclusão e carregamento de arquivo ok;
+Austregíselo Junior     10/11/2020 Alterando os cálculos segundo a consultoria de Icaro do ECCUS (esperar os dados do eccusoftware);
+Austregíselo Junior     10/11/2020 Criando e implementando os serviços de edição de arquivo; 
+Austregíselo Junior     11/11/2020 Não consegui realizar a atividade acima como queria (inplementar o serviçonuma classe específica);
+Austregíselo Junior     11/11/2020 Implementando o cálculo de custo total, segundoo a tabela de custo;
+Austregíselo Junior     16/11/2020 Implementando o dimensionamento completo com os pneus e mecânica da tabela de orçamento;
+Austregíselo Junior     17/11/2020 Implementando edição de arquivo da tabela de orçamento (OK);
+Austregíselo Junior     17/11/2020 Retirei análise gráfica porque achei sem sentido;
+Austregíselo Junior     18/11/2020 Alterei o leyout e a mecânica de abrir telas no StartView.cs e Program.cs;
+Austregíselo Junior     18/11/2020 Adicionei programação defensiva para que o usuário não calcule nada com dado = 0;
+Austregíselo Junior     19/11/2020 Fazendo correção de portugûes e melhorando o código com implementação de serviços de edição de arquivos;
+Austregíselo Junior     20/11/2020 Ajuste na largura da bet = diâmetro do pneu + 1.0;
+Austregíselo Junior     20/11/2020 Verificar a questão dos limites e pesquisar sobre as configurações, certificados e assinaturas;
+Austregíselo Junior     23/11/2020 Substituindo as igualdades por equals(A diferença é que == compara a refeência e o equals compara o conteúdo do objeto);
 
 -------------------------------------------------------------------------------------------------------------------------
 Histórico de Bugs        
 Autor                   Data       Descrição  
-Austregíselo Junior     29/10/2020 Quando o textbox não tem nada ele estoura uma exerção;
+Austregíselo Junior     29/10/2020 Quando o textbox não tem nada ele estoura uma exerção. -> A correção foi por todo o cálculo num bloco try e gerar 
+                                   uma análise de erro pra tudo, já que eram os mesmos erros.
+Austregíselo Junior     06/11/2020 Ao passar os valores ao grid o grid não mostra nada. -> consegui contornar o problema implementando o grid 
+                                   diretamente no formulário em que ele está.
+Austregíselo Junior     10/11/2020 Salvar e carregar não então funcionando, ao salvar o arquuivo fica vazio o arquivo não está sendo carregado ->
+                                   o jeiro foi adicionar os serviço no form em que está o grid, pois mesmo fazendo de um form para outra deu errado
+
 ----------------------  ---------- --------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------------------------------------------
 */
 
+using ECCUSBET.Model.Entities;
+using ECCUSBET.Model.Enums;
+using ECCUSBET.Model.Services;
 using System;
-using System.Linq.Expressions;
-using System.Runtime.InteropServices;
+using System.Globalization;
 using System.Windows.Forms;
+
 
 namespace ECCUSBET.View
 {
     public partial class SizingView : Form
     {
+
         public SizingView()
         {
             InitializeComponent();
         }
 
-        //------------------------------  Variáveis de escopo global  ----------------------------//
-        double VolUtio, ContrDiaruiaTotal, Rp, AreadaBet;
-        int CLodoFresco = 1;
-        int MetroQuadradoporHab = 2;
-        int Rc, Rt, NPessoas;
 
-
-        //----------------------- Funçôes com adição de programação defenciva  -------------------//
-        private int ContribuicaoDiaria()
+        //---------------------------------- Dimensionamento -----------------------------------------//
+        public void BtnCalcular_Click(object sender, EventArgs e)
         {
-            if ((string)BoxSelecaoPadrao.SelectedItem == "Residência de baixo padrão")  //Converção explicita (casting)
+
+            if (((string)BoxSelecaoPadrao.SelectedItem == null))
             {
-                Rc = 100;
+                MessageBox.Show("Escolha o padrão de ocupação!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Residência de médio padrão")
+            else if (txtNPessoas.Text.Equals("0") || txtIntervalodeLimpeza.Text.Equals("0"))
             {
-                Rc = 130;
+                MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Residência de alto padrão")
+            else if (txtTemperatura.Text.Equals("0") || TxtLarguraPneu.Text.Equals("0"))
             {
-                Rc = 160;
+                MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Hotel (exceto lavanderia e cozinha)")
+            else if (TxtPerfil.Text.Equals("0") || TxtAro.Text.Equals("0"))
             {
-                Rc = 100;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Alojamento provisório")
-            {
-                Rc = 80;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Edfícios públicos ou comerciais")
-            {
-                Rc = 50;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Escolas")
-            {
-                Rc = 50;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Bares")
-            {
-                Rc = 6;
-            }
-            else if ((string)BoxSelecaoPadrao.SelectedItem == "Restaurantes e similares")
-            {
-                Rc = 25;
+                MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                MessageBox.Show("Erro, o padrão de ocupação!", MessageBoxButtons.OK.ToString());
-            return Rc;
+            {
+                try
+                {
+                    // Entrada de dados + instanciação com construtor
+                    Enum.TryParse(BoxSelecaoPadrao.Text, out Ocupacao_Enums ocupacao);
+                    int npessoas = int.Parse(txtNPessoas.Text);
+                    int intervalo = int.Parse(txtIntervalodeLimpeza.Text, CultureInfo.InvariantCulture);
+                    double temperatura = double.Parse(txtTemperatura.Text, CultureInfo.InvariantCulture);
+                    double larguraPneu = double.Parse(TxtLarguraPneu.Text, CultureInfo.InvariantCulture);
+                    double perfil = double.Parse(TxtPerfil.Text, CultureInfo.InvariantCulture);
+                    int aro = int.Parse(TxtAro.Text, CultureInfo.InvariantCulture);
+
+
+                    Bet_Entities bet = new Bet_Entities(ocupacao, npessoas, intervalo, temperatura);
+                    Pneu_Entities pneu = new Pneu_Entities(larguraPneu, perfil, aro);
+
+
+                    // Chamada do métododo 
+                    bet.Dimensionamento();
+                    bet.ProfundidadeMedia();
+                    pneu.Dimensi_Pneu();
+                    bet.Largura_Bet(pneu.DiametroPneu);
+                    pneu.QTE_Pneu(bet.VolUtio);
+                    bet.ComprimentodaBaciat(pneu.QTEPneus, pneu.LarguraPneu);
+
+
+                    // Saída de dados (Esse tipo de saída só funciona porque passei o próprio form como parâmetro através do "this")
+                   
+                    bet.SaidadeDados(this);
+                    pneu.SaidadeDados(this);
+
+
+                    // Add os resultados ao grid de dimensionamento
+                    GridDimens.Rows.Add(TxtVolUtio.Text, TxtProfundidadeMedia.Text, TxtQtePeneus.Text, TxtComprimento.Text, TxtLarguradaBet.Text);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Adicione o ítem!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
 
-        private double PeriododeDetencao()
+        //--------------------------------- Mecânica das tabelas ---------------------------------------//
+        private void BtnExcluirLinha_Click_1(object sender, EventArgs e)
         {
-            if (txtNPessoas.Text == "0" || txtNPessoas.Text == "")
+            if (MessageBox.Show("Deseja excluir a linha selecionada?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                Rp = 0;
-                            }
 
-            ContrDiaruiaTotal = (Rc * NPessoas);
-            if (ContrDiaruiaTotal <= 1500)
-            {
-                Rp = 1;
+                if (GridDimens.CurrentRow == null)
+                {
+                    MessageBox.Show("Selecione uma linha da tabela!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    GridDimens.Rows.RemoveAt(GridDimens.CurrentRow.Index);
+                }
             }
-            else if (ContrDiaruiaTotal <= 1500)
+        }
+
+        private void BtnExcluirLinha_TbOrcamento_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja excluir a linha selecionada?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                Rp = 1;
+
+                if (GrigOrcamento.CurrentRow == null)
+                {
+                    MessageBox.Show("Selecione uma linha da tabela!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    GrigOrcamento.Rows.RemoveAt(GrigOrcamento.CurrentRow.Index);
+                }
             }
-            else if (ContrDiaruiaTotal >= 1501 && ContrDiaruiaTotal <= 3000)
+        }
+
+        private void BtnAddGridOrcamento_Click(object sender, EventArgs e)
+        {
+            double precoUnidade, unidade, precoTotal;
+
+            if (TxtServico_Equi.Text.Equals(""))
             {
-                Rp = 0.92;
+                MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (ContrDiaruiaTotal >= 3001 && ContrDiaruiaTotal <= 4500)
+            else if (TxtPreco_Uni.Text.Equals("0") || TxtUnidade.Text.Equals("0"))
             {
-                Rp = 0.83;
-            }
-            else if (ContrDiaruiaTotal >= 4501 && ContrDiaruiaTotal <= 6000)
-            {
-                Rp = 0.75;
-            }
-            else if (ContrDiaruiaTotal >= 6001 && ContrDiaruiaTotal <= 7500)
-            {
-                Rp = 0.67;
-            }
-            else if (ContrDiaruiaTotal >= 7501 && ContrDiaruiaTotal <= 9000)
-            {
-                Rp = 0.58;
+                MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                Rp = 0.5;
-            return Rp;
+            {
+                _ = TxtServico_Equi.Text;
+
+                try
+                {
+                    precoUnidade = double.Parse(TxtPreco_Uni.Text);
+                    unidade = double.Parse(TxtUnidade.Text);
+
+                    precoTotal = unidade * precoUnidade;
+                    TxtPreco_total.Text = precoTotal.ToString("F2", CultureInfo.InvariantCulture);
+
+                    // add os dados ao grid de orçamento
+                    GrigOrcamento.Rows.Add(TxtServico_Equi.Text, TxtUnidade.Text, TxtPreco_Uni.Text, TxtPreco_total.Text);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Adicione o ítem!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
-        public int TaxadeAcumulacao(int intervalo, int temperatura) //Por padrão é passavem por valor 
+
+        private void BtnCustoTotal_Click_1(object sender, EventArgs e)
         {
-            if (txtIntervalodeLimpeza.Text == "0" || txtTemperatura.Text == "")
+            double quantia;
+            double custoTotal = 0;
+            int nlinhas = GrigOrcamento.Rows.Count;
+
+            for (int i = 0; i < nlinhas; i++) // É dessa forma porque com 0 são 4 iterações pra 3 lnhas, assim i tem que ser < que nlinhas e não <=
             {
-                Rt = 0;
+                quantia = Convert.ToDouble(GrigOrcamento.Rows[i].Cells["TabPrecoTotal"].Value);
+                custoTotal += quantia;
             }
 
-
-            if (intervalo == 1)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (temperatura <= 10)
-                    {
-                        Rt = 94;
-                    }
-                    else if (temperatura > 10 && temperatura <= 20)
-                    {
-                        Rt = 65;
-                    }
-                    else
-                    {
-                        Rt = 57;
-                    }
-                }
-            }
-            else if (intervalo == 2)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (temperatura <= 10)
-                    {
-                        Rt = 134;
-                    }
-                    else if (temperatura > 10 && temperatura <= 20)
-                    {
-                        Rt = 105;
-                    }
-                    else
-                    {
-                        Rt = 97;
-                    }
-                }
-            }
-            else if (intervalo == 3)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (temperatura <= 10)
-                    {
-                        Rt = 174;
-                    }
-                    else if (temperatura > 10 && temperatura <= 20)
-                    {
-                        Rt = 145;
-                    }
-                    else
-                    {
-                        Rt = 137;
-                    }
-                }
-            }
-            else if (intervalo == 4)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (temperatura <= 10)
-                    {
-                        Rt = 214;
-                    }
-                    else if (temperatura > 10 && temperatura <= 20)
-                    {
-                        Rt = 185;
-                    }
-                    else
-                    {
-                        Rt = 177;
-                    }
-                }
-            }
-            else if (intervalo == 5)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    if (temperatura <= 10)
-                    {
-                        Rt = 254;
-                    }
-                    else if (temperatura > 10 && temperatura <= 20)
-                    {
-                        Rt = 255;
-                    }
-                    else
-                    {
-                        Rt = 217;
-                    }
-                }
-            }
-            return Rt;
+            TxtCustoTotal.Text = custoTotal.ToString("F2", CultureInfo.InvariantCulture);
         }
 
-        private double ProfundidadeUtil()
-        {
-            double Pmini, Pmax, Pmedio;
-            Pmedio = 0;
-            if (VolUtio == 0)
-            {
-                TxtProfundidadeMedia.Text = "0";
-            }
 
-            if (VolUtio <= 6)
-            {
-                Pmini = 1.2;
-                Pmax = 2.2;
-                Pmedio = ((Pmini + Pmax) / 2);
-            }
-            else if (VolUtio > 6 && VolUtio <= 10)
-            {
-                Pmini = 1.5;
-                Pmax = 2.5;
-                Pmedio = ((Pmini + Pmax) / 2);
-            }
-            else if (VolUtio > 10)
-            {
-                Pmini = 1.8;
-                Pmax = 2.8;
-                Pmedio = ((Pmini + Pmax) / 2);
-            }
-            return Pmedio;
-        }
-
-        private void BtnCalcular_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                double PD;
-                int CD, TA;
-
-                CD = ContribuicaoDiaria();
-                TA = TaxadeAcumulacao(intervalo: int.Parse(txtIntervalodeLimpeza.Text),
-                                      temperatura: int.Parse(txtTemperatura.Text));
-                NPessoas = int.Parse(txtNPessoas.Text);
-                PD = PeriododeDetencao();
-
-                VolUtio = (1000 + NPessoas * ((CD * PD) + (TA * CLodoFresco))) / 1000;
-                TxtVolUtio.Text = VolUtio.ToString("F2");
-
-                if (CD == 0 || PD == 0 || TA == 0) // programação defenciva
-                {
-                    TxtVolUtio.Text = "0";
-                }
-
-                TxtProfundidadeMedia.Text = ProfundidadeUtil().ToString("F2");
-                AreadaBet = (NPessoas * MetroQuadradoporHab);
-                TxtAreadaBet.Text = AreadaBet.ToString("F2");
-                TxtVolTotal.Text = (AreadaBet * ProfundidadeUtil()).ToString("F2");
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Erro, adicione o ítem!", MessageBoxButtons.OK.ToString());
-            }
-
-        }
-
+        // --------------------------- Mecânica do layout --------------------------------//
         private void ManualToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManualView manualView = new ManualView();
@@ -309,10 +232,64 @@ namespace ECCUSBET.View
 
         private void SairToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
-            StartView startView = new StartView();
-            startView.Close();
+            Application.Exit();
         }
 
+        private void LimparToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BoxSelecaoPadrao.SelectedItem = null;
+            txtTemperatura.Clear();
+            txtIntervalodeLimpeza.Clear();
+            txtNPessoas.Clear();
+            TxtVolUtio.Clear();
+            TxtProfundidadeMedia.Clear();
+            GridDimens.Rows.Clear();
+            TxtServico_Equi.Clear();
+            TxtUnidade.Clear();
+            TxtPreco_Uni.Clear();
+            TxtPreco_total.Clear();
+            GrigOrcamento.Rows.Clear();
+            TxtLarguradaBet.Clear();
+            TxtComprimento.Clear();
+            TxtProfundidadeMedia.Clear();
+            TxtQtePeneus.Clear();
+            TxtLarguraPneu.Clear();
+            TxtPerfil.Clear();
+            TxtAro.Clear();
+            TxtVolPneu.Clear();
+            TxtCustoTotal.Clear();
+        }
+
+
+        // -------------------------- Serviços de edição de arquivos apartir do grid -------------------//
+
+        readonly Arquivos_Service arquivos = new Arquivos_Service();
+
+        private void SalvarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            arquivos.SalvarArquivo(this);
+        }
+
+        private void ExcluirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            arquivos.ExcluirArquivo();
+        }
+
+        private void CarregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            arquivos.CarregarArquivo(this);
+        }
+
+        private void NosAjudeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NosAjude nosAjude = new NosAjude();
+            nosAjude.Show();
+        }
+
+        private void FeedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Feedback feedback = new Feedback();
+            feedback.Show();
+        }
     }
 }
