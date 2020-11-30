@@ -280,5 +280,16 @@ namespace ECCUSBET.View
             arquivos.CarregarArquivo(this);
         }
 
+        private void NosAjudeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NosAjude nosAjude = new NosAjude();
+            nosAjude.Show();
+        }
+
+        private void FeedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Feedback feedback = new Feedback();
+            feedback.Show();
+        }
     }
 }

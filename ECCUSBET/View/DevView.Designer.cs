@@ -148,7 +148,7 @@
             // 
             this.LinkedinGitHub.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LinkedinGitHub.AutoSize = true;
-            this.LinkedinGitHub.Location = new System.Drawing.Point(166, 572);
+            this.LinkedinGitHub.Location = new System.Drawing.Point(166, 560);
             this.LinkedinGitHub.Name = "LinkedinGitHub";
             this.LinkedinGitHub.Size = new System.Drawing.Size(238, 13);
             this.LinkedinGitHub.TabIndex = 21;
@@ -159,7 +159,7 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(122, 573);
+            this.Label2.Location = new System.Drawing.Point(122, 561);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(289, 13);
             this.Label2.TabIndex = 22;
@@ -223,6 +223,7 @@
             this.Controls.Add(this.Label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DevView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Desenvolvimento";
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.ResumeLayout(false);

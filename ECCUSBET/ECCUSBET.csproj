@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Fabrica\ECCUS\Exe\</PublishUrl>
+    <PublishUrl>C:\ECCUSBET\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -43,6 +43,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <LangVersion>8.0</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -110,6 +111,12 @@
     <Compile Include="View\DevView.Designer.cs">
       <DependentUpon>DevView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Feedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Feedback.Designer.cs">
+      <DependentUpon>Feedback.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ManualView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\DevView.resx">
       <DependentUpon>DevView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Feedback.resx">
+      <DependentUpon>Feedback.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ManualView.resx">
       <DependentUpon>ManualView.cs</DependentUpon>

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace ECCUSBET.View
@@ -15,6 +8,11 @@ namespace ECCUSBET.View
         public NosAjude()
         {
             InitializeComponent();
+        }
+
+        private void Link_Site_ECCUS_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://instituto-eccus.github.io/index.html");
         }
     }
 }

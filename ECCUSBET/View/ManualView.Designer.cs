@@ -43,10 +43,10 @@
             // Label5
             // 
             this.Label5.AutoSize = true;
-            this.Label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label5.Location = new System.Drawing.Point(14, 374);
+            this.Label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label5.Location = new System.Drawing.Point(14, 372);
             this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(96, 16);
+            this.Label5.Size = new System.Drawing.Size(108, 19);
             this.Label5.TabIndex = 14;
             this.Label5.Text = "Barra de menu";
             // 
@@ -67,10 +67,10 @@
             // Label3
             // 
             this.Label3.AutoSize = true;
-            this.Label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(14, 200);
+            this.Label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label3.Location = new System.Drawing.Point(14, 198);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(53, 16);
+            this.Label3.Size = new System.Drawing.Size(59, 19);
             this.Label3.TabIndex = 12;
             this.Label3.Text = "Análise";
             // 
@@ -91,10 +91,10 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label2.Location = new System.Drawing.Point(14, 9);
+            this.Label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label2.Location = new System.Drawing.Point(14, 7);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(117, 16);
+            this.Label2.Size = new System.Drawing.Size(129, 19);
             this.Label2.TabIndex = 10;
             this.Label2.Text = "Dimensionamento";
             // 
@@ -115,10 +115,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(532, 9);
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(532, 7);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 16);
+            this.label7.Size = new System.Drawing.Size(94, 19);
             this.label7.TabIndex = 16;
             this.label7.Text = "Metodologia";
             // 
@@ -166,6 +166,7 @@
             this.Controls.Add(this.Label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "ManualView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manual";
             this.ResumeLayout(false);
             this.PerformLayout();

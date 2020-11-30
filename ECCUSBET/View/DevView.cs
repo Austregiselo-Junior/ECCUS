@@ -26,7 +26,7 @@ namespace ECCUSBET.View
 
         private void LinkedinVanini_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.linkedin.com/in/vanine-farias-501a7b104/"); 
+            Process.Start("https://www.linkedin.com/in/vanine-farias-501a7b104/");
         }
 
         private void LinkedinSayonara_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -46,7 +46,7 @@ namespace ECCUSBET.View
 
         private void LinkedinFabio_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.linkedin.com/in/fabiobpmaia");  
+            Process.Start("https://www.linkedin.com/in/fabiobpmaia");
         }
 
         private void LinkedinIcaro_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
