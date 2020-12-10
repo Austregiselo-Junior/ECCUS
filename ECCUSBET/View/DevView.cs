@@ -53,5 +53,10 @@ namespace ECCUSBET.View
         {
             Process.Start("https://www.linkedin.com/in/%C3%ADcaro-albuquerque-065a5a159/");
         }
+
+        private void Linkedin_Joao_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://www.linkedin.com/in/joaonasc-filho/");
+        }
     }
 }

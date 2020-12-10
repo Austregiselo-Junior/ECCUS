@@ -42,6 +42,7 @@
             this.LinkedinIgor = new System.Windows.Forms.LinkLabel();
             this.LinkedinFabio = new System.Windows.Forms.LinkLabel();
             this.LinkedinIcaro = new System.Windows.Forms.LinkLabel();
+            this.Linkedin_Joao = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             // 
             this.LindedinRafael.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LindedinRafael.AutoSize = true;
-            this.LindedinRafael.Location = new System.Drawing.Point(181, 433);
+            this.LindedinRafael.Location = new System.Drawing.Point(181, 435);
             this.LindedinRafael.Name = "LindedinRafael";
             this.LindedinRafael.Size = new System.Drawing.Size(174, 13);
             this.LindedinRafael.TabIndex = 20;
@@ -61,7 +62,7 @@
             // 
             this.LinkedinSayonara.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LinkedinSayonara.AutoSize = true;
-            this.LinkedinSayonara.Location = new System.Drawing.Point(106, 403);
+            this.LinkedinSayonara.Location = new System.Drawing.Point(106, 405);
             this.LinkedinSayonara.Name = "LinkedinSayonara";
             this.LinkedinSayonara.Size = new System.Drawing.Size(325, 13);
             this.LinkedinSayonara.TabIndex = 17;
@@ -73,7 +74,7 @@
             // 
             this.LinkedinVanini.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LinkedinVanini.AutoSize = true;
-            this.LinkedinVanini.Location = new System.Drawing.Point(134, 373);
+            this.LinkedinVanini.Location = new System.Drawing.Point(134, 375);
             this.LinkedinVanini.Name = "LinkedinVanini";
             this.LinkedinVanini.Size = new System.Drawing.Size(269, 13);
             this.LinkedinVanini.TabIndex = 18;
@@ -85,7 +86,7 @@
             // 
             this.LinkedinAustregiselo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LinkedinAustregiselo.AutoSize = true;
-            this.LinkedinAustregiselo.Location = new System.Drawing.Point(161, 313);
+            this.LinkedinAustregiselo.Location = new System.Drawing.Point(161, 315);
             this.LinkedinAustregiselo.Name = "LinkedinAustregiselo";
             this.LinkedinAustregiselo.Size = new System.Drawing.Size(213, 13);
             this.LinkedinAustregiselo.TabIndex = 14;
@@ -98,10 +99,10 @@
             this.Label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Label3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label3.Location = new System.Drawing.Point(19, 282);
+            this.Label3.Location = new System.Drawing.Point(19, 284);
             this.Label3.MaximumSize = new System.Drawing.Size(500, 500);
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(500, 273);
+            this.Label3.Size = new System.Drawing.Size(500, 302);
             this.Label3.TabIndex = 19;
             this.Label3.Text = resources.GetString("Label3.Text");
             this.Label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -110,7 +111,7 @@
             // 
             this.LinkInstagranECCUS.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LinkInstagranECCUS.AutoSize = true;
-            this.LinkInstagranECCUS.Location = new System.Drawing.Point(153, 230);
+            this.LinkInstagranECCUS.Location = new System.Drawing.Point(153, 226);
             this.LinkInstagranECCUS.Name = "LinkInstagranECCUS";
             this.LinkInstagranECCUS.Size = new System.Drawing.Size(213, 13);
             this.LinkInstagranECCUS.TabIndex = 16;
@@ -125,7 +126,7 @@
             this.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.PictureBox1.ErrorImage = null;
             this.PictureBox1.InitialImage = null;
-            this.PictureBox1.Location = new System.Drawing.Point(123, 15);
+            this.PictureBox1.Location = new System.Drawing.Point(123, 10);
             this.PictureBox1.Name = "PictureBox1";
             this.PictureBox1.Size = new System.Drawing.Size(291, 183);
             this.PictureBox1.TabIndex = 15;
@@ -136,7 +137,7 @@
             this.Label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label1.Location = new System.Drawing.Point(19, 214);
+            this.Label1.Location = new System.Drawing.Point(19, 209);
             this.Label1.MaximumSize = new System.Drawing.Size(500, 500);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(500, 250);
@@ -148,7 +149,7 @@
             // 
             this.LinkedinGitHub.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LinkedinGitHub.AutoSize = true;
-            this.LinkedinGitHub.Location = new System.Drawing.Point(166, 560);
+            this.LinkedinGitHub.Location = new System.Drawing.Point(166, 597);
             this.LinkedinGitHub.Name = "LinkedinGitHub";
             this.LinkedinGitHub.Size = new System.Drawing.Size(238, 13);
             this.LinkedinGitHub.TabIndex = 21;
@@ -159,7 +160,7 @@
             // Label2
             // 
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(122, 561);
+            this.Label2.Location = new System.Drawing.Point(123, 597);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(289, 13);
             this.Label2.TabIndex = 22;
@@ -170,7 +171,7 @@
             // 
             this.LinkedinIgor.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LinkedinIgor.AutoSize = true;
-            this.LinkedinIgor.Location = new System.Drawing.Point(150, 463);
+            this.LinkedinIgor.Location = new System.Drawing.Point(150, 465);
             this.LinkedinIgor.Name = "LinkedinIgor";
             this.LinkedinIgor.Size = new System.Drawing.Size(238, 13);
             this.LinkedinIgor.TabIndex = 23;
@@ -182,7 +183,7 @@
             // 
             this.LinkedinFabio.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LinkedinFabio.AutoSize = true;
-            this.LinkedinFabio.Location = new System.Drawing.Point(167, 493);
+            this.LinkedinFabio.Location = new System.Drawing.Point(167, 495);
             this.LinkedinFabio.Name = "LinkedinFabio";
             this.LinkedinFabio.Size = new System.Drawing.Size(204, 13);
             this.LinkedinFabio.TabIndex = 24;
@@ -194,7 +195,7 @@
             // 
             this.LinkedinIcaro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.LinkedinIcaro.AutoSize = true;
-            this.LinkedinIcaro.Location = new System.Drawing.Point(101, 524);
+            this.LinkedinIcaro.Location = new System.Drawing.Point(101, 526);
             this.LinkedinIcaro.Name = "LinkedinIcaro";
             this.LinkedinIcaro.Size = new System.Drawing.Size(336, 13);
             this.LinkedinIcaro.TabIndex = 25;
@@ -202,12 +203,25 @@
             this.LinkedinIcaro.Text = "https://www.linkedin.com/in/%C3%ADcaro-albuquerque-065a5a159/";
             this.LinkedinIcaro.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkedinIcaro_LinkClicked);
             // 
+            // Linkedin_Joao
+            // 
+            this.Linkedin_Joao.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Linkedin_Joao.AutoSize = true;
+            this.Linkedin_Joao.Location = new System.Drawing.Point(161, 555);
+            this.Linkedin_Joao.Name = "Linkedin_Joao";
+            this.Linkedin_Joao.Size = new System.Drawing.Size(217, 13);
+            this.Linkedin_Joao.TabIndex = 26;
+            this.Linkedin_Joao.TabStop = true;
+            this.Linkedin_Joao.Text = "https://www.linkedin.com/in/joaonasc-filho/";
+            this.Linkedin_Joao.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Linkedin_Joao_LinkClicked);
+            // 
             // DevView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(539, 599);
+            this.ClientSize = new System.Drawing.Size(539, 636);
+            this.Controls.Add(this.Linkedin_Joao);
             this.Controls.Add(this.LinkedinIcaro);
             this.Controls.Add(this.LinkedinFabio);
             this.Controls.Add(this.LinkedinIgor);
@@ -246,5 +260,6 @@
         internal System.Windows.Forms.LinkLabel LinkedinIgor;
         internal System.Windows.Forms.LinkLabel LinkedinFabio;
         internal System.Windows.Forms.LinkLabel LinkedinIcaro;
+        internal System.Windows.Forms.LinkLabel Linkedin_Joao;
     }
 }

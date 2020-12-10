@@ -33,7 +33,7 @@ Austregíselo Junior     19/11/2020 Fazendo correção de portugûes e melhorand
 Austregíselo Junior     20/11/2020 Ajuste na largura da bet = diâmetro do pneu + 1.0;
 Austregíselo Junior     20/11/2020 Verificar a questão dos limites e pesquisar sobre as configurações, certificados e assinaturas;
 Austregíselo Junior     23/11/2020 Substituindo as igualdades por equals(A diferença é que == compara a refeência e o equals compara o conteúdo do objeto);
-
+Austregíselo Junior     23/11/2020 Add abas "Nos ajude" e "Feedback";
 -------------------------------------------------------------------------------------------------------------------------
 Histórico de Bugs        
 Autor                   Data       Descrição  
