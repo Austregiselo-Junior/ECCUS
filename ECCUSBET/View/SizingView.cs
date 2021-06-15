@@ -76,15 +76,15 @@ namespace ECCUSBET.View
             {
                 MessageBox.Show("Escolha o padrão de ocupação!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (txtNPessoas.Text.Equals("0") || txtIntervalodeLimpeza.Text.Equals("0"))
+            else if (txtNPessoas.Text == "0" || txtIntervalodeLimpeza.Text == "0")
             {
                 MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (txtTemperatura.Text.Equals("0") || TxtLarguraPneu.Text.Equals("0"))
+            else if (txtTemperatura.Text == "0" || TxtLarguraPneu.Text == "0")
             {
                 MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (TxtPerfil.Text.Equals("0") || TxtAro.Text.Equals("0"))
+            else if (TxtPerfil.Text == "0" || TxtAro.Text == "0")
             {
                 MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -94,12 +94,12 @@ namespace ECCUSBET.View
                 {
                     // Entrada de dados + instanciação com construtor
                     Enum.TryParse(BoxSelecaoPadrao.Text, out Ocupacao_Enums ocupacao);
-                    int npessoas = int.Parse(txtNPessoas.Text);
-                    int intervalo = int.Parse(txtIntervalodeLimpeza.Text, CultureInfo.InvariantCulture);
-                    double temperatura = double.Parse(txtTemperatura.Text, CultureInfo.InvariantCulture);
-                    double larguraPneu = double.Parse(TxtLarguraPneu.Text, CultureInfo.InvariantCulture);
-                    double perfil = double.Parse(TxtPerfil.Text, CultureInfo.InvariantCulture);
-                    int aro = int.Parse(TxtAro.Text, CultureInfo.InvariantCulture);
+                    var npessoas = int.Parse(txtNPessoas.Text);
+                    var intervalo = int.Parse(txtIntervalodeLimpeza.Text, CultureInfo.InvariantCulture);
+                    var temperatura = double.Parse(txtTemperatura.Text, CultureInfo.InvariantCulture);
+                    var larguraPneu = double.Parse(TxtLarguraPneu.Text, CultureInfo.InvariantCulture);
+                    var perfil = double.Parse(TxtPerfil.Text, CultureInfo.InvariantCulture);
+                    var aro = int.Parse(TxtAro.Text, CultureInfo.InvariantCulture);
 
 
                     Bet_Entities bet = new Bet_Entities(ocupacao, npessoas, intervalo, temperatura);
@@ -169,11 +169,11 @@ namespace ECCUSBET.View
         {
             double precoUnidade, unidade, precoTotal;
 
-            if (TxtServico_Equi.Text.Equals(""))
+            if (TxtServico_Equi.Text == "")
             {
                 MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (TxtPreco_Uni.Text.Equals("0") || TxtUnidade.Text.Equals("0"))
+            else if (TxtPreco_Uni.Text == "0" || TxtUnidade.Text == "0")
             {
                 MessageBox.Show("Adicione o ítem corretamente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -259,9 +259,7 @@ namespace ECCUSBET.View
             TxtVolPneu.Clear();
             TxtCustoTotal.Clear();
         }
-
-
-        // -------------------------- Serviços de edição de arquivos apartir do grid -------------------//
+               
 
         readonly Arquivos_Service arquivos = new Arquivos_Service();
 

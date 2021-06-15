@@ -67,6 +67,7 @@ namespace ECCUSBET.View
             this.txtTemperatura = new System.Windows.Forms.TextBox();
             this.TxtVolUtio = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label34 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -123,7 +124,6 @@ namespace ECCUSBET.View
             this.manualToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nosAjudeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.feedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label34 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabDimensionamento.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -517,6 +517,16 @@ namespace ECCUSBET.View
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(638, 327);
             this.panel3.TabIndex = 25;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(467, 255);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(129, 15);
+            this.label34.TabIndex = 27;
+            this.label34.Text = "JOÃO E. FILHO (2020)";
             // 
             // label23
             // 
@@ -964,10 +974,10 @@ namespace ECCUSBET.View
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.arquivoToolStripMenuItem,
             this.desenvolvimentoToolStripMenuItem,
             this.manualToolStripMenuItem,
             this.nosAjudeToolStripMenuItem,
+            this.arquivoToolStripMenuItem,
             this.feedbackToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -995,59 +1005,59 @@ namespace ECCUSBET.View
             // 
             this.limparToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("limparToolStripMenuItem.Image")));
             this.limparToolStripMenuItem.Name = "limparToolStripMenuItem";
-            this.limparToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.limparToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.limparToolStripMenuItem.Text = "Limpar";
             this.limparToolStripMenuItem.Click += new System.EventHandler(this.LimparToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(116, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // salvarToolStripMenuItem
             // 
             this.salvarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("salvarToolStripMenuItem.Image")));
             this.salvarToolStripMenuItem.Name = "salvarToolStripMenuItem";
-            this.salvarToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.salvarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.salvarToolStripMenuItem.Text = "Salvar";
             this.salvarToolStripMenuItem.Click += new System.EventHandler(this.SalvarToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(116, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // carregarToolStripMenuItem
             // 
             this.carregarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("carregarToolStripMenuItem.Image")));
             this.carregarToolStripMenuItem.Name = "carregarToolStripMenuItem";
-            this.carregarToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.carregarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.carregarToolStripMenuItem.Text = "Carregar";
             this.carregarToolStripMenuItem.Click += new System.EventHandler(this.CarregarToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(116, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // excluirToolStripMenuItem
             // 
             this.excluirToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("excluirToolStripMenuItem.Image")));
             this.excluirToolStripMenuItem.Name = "excluirToolStripMenuItem";
-            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.excluirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.excluirToolStripMenuItem.Text = "Excluir";
             this.excluirToolStripMenuItem.Click += new System.EventHandler(this.ExcluirToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(116, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("sairToolStripMenuItem.Image")));
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.SairToolStripMenuItem_Click);
             // 
@@ -1078,16 +1088,6 @@ namespace ECCUSBET.View
             this.feedbackToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.feedbackToolStripMenuItem.Text = "Feedback";
             this.feedbackToolStripMenuItem.Click += new System.EventHandler(this.FeedbackToolStripMenuItem_Click);
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label34.Location = new System.Drawing.Point(467, 255);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(129, 15);
-            this.label34.TabIndex = 27;
-            this.label34.Text = "JOÃO E. FILHO (2020)";
             // 
             // SizingView
             // 

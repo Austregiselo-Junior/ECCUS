@@ -37,6 +37,10 @@ namespace ECCUSBET.Model.Entities
 
 
         //------------------  Métodos persolanizados  -----------------//
+        /// <summary>
+        /// Calcula o período de detenção, com base na contribuiçaõ diário total, "<see cref="ContrDiaruiaTotal"/>".
+        /// </summary>
+        /// <returns>Retorna o período de detenção</returns>
         private double PeriododeDetencao()
         {
             ContrDiaruiaTotal = ((double)SelecaoPadrao * Npessoas);
@@ -69,6 +73,10 @@ namespace ECCUSBET.Model.Entities
             return Pd;
         }
 
+        /// <summary>
+        /// Calcula a taxa de acumulação com base na "<see cref="Temperatura"/>" e <see cref="Intervalo"/>.
+        /// </summary>
+        /// <returns>Taxa de acumulação</returns>
         private int TaxadeAcumulacao()
         {
             SizingView sizingView = new SizingView();
@@ -162,12 +170,16 @@ namespace ECCUSBET.Model.Entities
             return Ta;
         }
 
+        /// <summary>
+        /// Calcula a profundidade média com base no volume útio, "<see cref="VolUtio"/>".
+        /// </summary>
+        /// <returns></returns>
         public double ProfundidadeMedia()
         {
             SizingView sizingView = new SizingView();
             if (VolUtio == 0)
             {
-                sizingView.TxtProfundidadeMedia.Text.Equals("0");
+                sizingView.TxtProfundidadeMedia.Text = "0";
             }
 
             if (VolUtio <= 6)
@@ -178,32 +190,51 @@ namespace ECCUSBET.Model.Entities
             {
                 ProfundidadeM = 1.5;
             }
-            else 
+            else
             {
                 ProfundidadeM = 1.8;
             }
             return ProfundidadeM;
         }
 
+        /// <summary>
+        /// Calcula o dimensionamento da bacia.
+        /// </summary>
+        /// <returns>Dimensionamento "<see cref="VolUtio"/>"</returns>
         public double Dimensionamento()
         {
             VolUtio = (1000 + Npessoas * (((double)SelecaoPadrao * PeriododeDetencao()) + (TaxadeAcumulacao() * CLodoFresco))) / 1000;
             return VolUtio;
         }
 
+        /// <summary>
+        /// Calcula a largura da bacia, que é o diâmetro do pneu mais 1 metro.
+        /// </summary>
+        /// <param name="diametroPeneu"> Recebe o diâmetro o pneu.</param>
+        /// <returns>Largura da bacia.</returns>
         public double Largura_Bet(double diametroPeneu)
         {
-
             LarguradaBet = diametroPeneu + 1.0;
             return LarguradaBet;
         }
 
+
+        /// <summary>
+        /// Calcula o comprimenta da bacia.
+        /// </summary>
+        /// <param name="quantidade"></param>
+        /// <param name="largura"></param>
+        /// <returns>Comprimento da bacia.</returns>
         public double ComprimentodaBaciat(int quantidade, double largura)
         {
             ComprimentoBet = quantidade * largura;
             return ComprimentoBet;
         }
 
+        /// <summary>
+        /// Método de saída de dados
+        /// </summary>
+        /// <param name="sizingView">Recebe o formulário</param>
         public void SaidadeDados(SizingView sizingView)
         {
             sizingView.TxtVolUtio.Text = VolUtio.ToString("F2", CultureInfo.InvariantCulture);

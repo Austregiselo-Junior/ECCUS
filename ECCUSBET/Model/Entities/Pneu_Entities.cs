@@ -27,6 +27,10 @@ namespace ECCUSBET.Model.Entities
             N_Roda = n_Roda * 0.0254; // fator de conversão;
         }
 
+        /// <summary>
+        /// Retorna o <see cref="VolPneu"/>.
+        /// </summary>
+        /// <returns></returns>
         public double Dimensi_Pneu()
         {
             DiametroPneu = (2 * Perfil + N_Roda);
@@ -35,12 +39,20 @@ namespace ECCUSBET.Model.Entities
             return VolPneu;
         }
 
+        /// <summary>
+        /// Método que retorna o volume de cada pneu ""<see cref="VolPneu"/>".
+        /// </summary>
+        /// <returns></returns>
         public double QTE_Pneu(double volutio)
         {
             QTEPneus = ((int)(volutio / VolPneu));
             return QTEPneus;
         }
 
+        /// <summary>
+        /// Método de saída de dados, em que as caixas de texto recebem seus valores.
+        /// </summary>
+        /// <param name="sizingView"></param>
         public void SaidadeDados(SizingView sizingView)
         {
             sizingView.TxtVolPneu.Text = VolPneu.ToString("F2", CultureInfo.InvariantCulture);
